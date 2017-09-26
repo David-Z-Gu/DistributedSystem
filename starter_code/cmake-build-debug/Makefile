@@ -177,6 +177,33 @@ echo_server.c.s:
 	$(MAKE) -f CMakeFiles/starter_code.dir/build.make CMakeFiles/starter_code.dir/echo_server.c.s
 .PHONY : echo_server.c.s
 
+log.o: log.c.o
+
+.PHONY : log.o
+
+# target to build an object file
+log.c.o:
+	$(MAKE) -f CMakeFiles/starter_code.dir/build.make CMakeFiles/starter_code.dir/log.c.o
+.PHONY : log.c.o
+
+log.i: log.c.i
+
+.PHONY : log.i
+
+# target to preprocess a source file
+log.c.i:
+	$(MAKE) -f CMakeFiles/starter_code.dir/build.make CMakeFiles/starter_code.dir/log.c.i
+.PHONY : log.c.i
+
+log.s: log.c.s
+
+.PHONY : log.s
+
+# target to generate assembly for a file
+log.c.s:
+	$(MAKE) -f CMakeFiles/starter_code.dir/build.make CMakeFiles/starter_code.dir/log.c.s
+.PHONY : log.c.s
+
 server.o: server.c.o
 
 .PHONY : server.o
@@ -219,6 +246,9 @@ help:
 	@echo "... echo_server.o"
 	@echo "... echo_server.i"
 	@echo "... echo_server.s"
+	@echo "... log.o"
+	@echo "... log.i"
+	@echo "... log.s"
 	@echo "... server.o"
 	@echo "... server.i"
 	@echo "... server.s"

@@ -88,6 +88,9 @@
 		<Unit filename="/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code/echo_server.c">
 			<Option target="starter_code"/>
 		</Unit>
+		<Unit filename="/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code/log.c">
+			<Option target="starter_code"/>
+		</Unit>
 		<Unit filename="/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code/server.c">
 			<Option target="starter_code"/>
 		</Unit>

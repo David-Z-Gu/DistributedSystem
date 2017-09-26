@@ -6,6 +6,6 @@ set(CMAKE_CXX_STANDARD 11)
 set(SOURCE_FILES
         echo_client.c
         echo_server.c
-        server.c)
+        server.c log.c)
 
 add_executable(starter_code ${SOURCE_FILES})
