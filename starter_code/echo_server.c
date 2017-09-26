@@ -47,7 +47,6 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Failed creating socket.\n");
         return EXIT_FAILURE;
     }
-    /*????????Where is addr defined??????????*/
     /*????????Where is AF_INET??????????*/
     addr.sin_family = AF_INET;
     addr.sin_port = htons(ECHO_PORT); /*htons makes sure that the numbers are stored in memory in network bytes order*/
