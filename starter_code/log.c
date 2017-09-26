@@ -2,40 +2,22 @@
 // Created by David Gu on 9/25/17.
 //
 
-#include <time.h>
-#include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include "log.h"
 
-FILE *log_open(const char *path);
-void Log(const char *format, ...);
+int log_file;
 
-FILE *log_open(const char *path)
-{
-    FILE *logfile;
-
-    logfile = fopen(path, "w");
-    if ( logfile == NULL )
-    {
-        fprintf(stdout, "Error opening logfile. \n");
-        exit(EXIT_FAILURE);
-    }
-
-    // set logfile to line buffering
-    setvbuf(logfile, NULL, _IOLBF, 0);
-
-    return logfile;
+void log_init(char *file) {
+    log_file = oepn(file, O_RDWR|O_CREAT);
 }
 
-void Log(const char *format, ...)
-{
-    time_t ltime;
-    struct tm *Tm;
+void log_write(Requests *req, char *addr, char *date, char *status, int size) {
 
-    ltime = time(NULL);
+}
 
+void log_write_string(char *format, ...) {
 
-    va_list ap;
-    va_start(ap, format);
-    vfprintf(STATE.log, format, ap);
+}
+
+void log_close(void) {
+    close(log_file);
 }
