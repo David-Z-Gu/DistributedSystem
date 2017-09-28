@@ -6,36 +6,26 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "log.h"
+#include <string.h>
+#include <fcntl.h>
+#include <unistd.h>
 
-FILE *log_open(const char *path);
-void Log(const char *format, ...);
 
-FILE *log_open(const char *path)
-{
-    FILE *logfile;
+int log_file;
 
-    logfile = fopen(path, "w");
-    if ( logfile == NULL )
-    {
-        fprintf(stdout, "Error opening logfile. \n");
-        exit(EXIT_FAILURE);
-    }
-
-    // set logfile to line buffering
-    setvbuf(logfile, NULL, _IOLBF, 0);
-
-    return logfile;
+void log_init(char *file) {
+    log_file = open(file, O_RDWR);
 }
 
-void Log(const char *format, ...)
-{
-    time_t ltime;
-    struct tm *Tm;
+void log_write(char *fmt, ...) {
+    char msg[256] = "";
+    va_list args;
+    va_start(args, fmt);
+    write(log_file, msg, strlen(msg));
+    va_end(args);
+}
 
-    ltime = time(NULL);
-
-
-    va_list ap;
-    va_start(ap, format);
-    vfprintf(STATE.log, format, ap);
+void log_close() {
+    close(log_file);
 }

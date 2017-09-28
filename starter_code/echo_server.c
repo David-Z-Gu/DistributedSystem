@@ -11,11 +11,13 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <unistd.h>
+#include "log.h"
 
 #define ECHO_PORT 9999
 #define BUF_SIZE 4096
 
 int close_socket(int sock) {
+    log_write("closing sock %d\n", sock);
     if (close(sock)) {
         fprintf(stderr, "Failed closing socket.\n");
         return 1;
@@ -29,28 +31,30 @@ int main(int argc, char *argv[]) {
     int i, j, k;
     int client[FD_SETSIZE], nready;
     int maxfd, max_idx;
-    int http_port;
+    int http_port, www_path;
+    char *log_file;
     ssize_t readret; /*ssize_t = the sizes of blocks that can be read or written in a single operation*/
     socklen_t cli_size; /*socklen_t = an integral type of at least 32 bits*/
     struct sockaddr_in addr, cli_addr; /*struct = a user defined data type that allows to combine data items of different kind*/
     char buf[BUF_SIZE];
     int yes = 1;
 
-    //http_port = atoi(argv[1]);
+    http_port = atoi(argv[1]);
+    www_path = atoi(argv[2]);
+    log_file = argv[3];
 
     fprintf(stdout, "----- Echo Server -----\n");
 
     /* all networked programs must create a socket */
-    /*????????Where is PF_INET defined,SOCK_STREAM defined??????????*/
     if ((sock = socket(AF_INET, SOCK_STREAM, 0)) == -1) /*socket(int domain, int type, int protocol); call creates an endpoint for communication and return a descriptor*/
     {
         fprintf(stderr, "Failed creating socket.\n");
         return EXIT_FAILURE;
     }
-    /*????????Where is AF_INET??????????*/
+
     addr.sin_family = AF_INET;
     addr.sin_port = htons(ECHO_PORT); /*htons makes sure that the numbers are stored in memory in network bytes order*/
-    addr.sin_addr.s_addr = INADDR_ANY; /*????????INADDR_ANY?????*/
+    addr.sin_addr.s_addr = INADDR_ANY;
 
     setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int));
 
@@ -77,6 +81,7 @@ int main(int argc, char *argv[]) {
     for (i=0; i<FD_SETSIZE; i++) {
         client[i] = -1;
     }
+    log_init(log_file);
     max_idx = -1;
     maxfd = sock; //initialize maxfd
     FD_ZERO(&master); // initialize descriptor to empty
@@ -116,24 +121,24 @@ int main(int argc, char *argv[]) {
                 if (client[k] > 0 && FD_ISSET(client[k], &read_fds)) {
                     nready--;
                     if ((readret = read(client[k], buf, BUF_SIZE)) > 1) {
-                        printf("Server received %d bytes data on %d\n",
+                        log_write("Server received %d bytes data on %d\n",
                                (int)readret, client[k]);
 
                         if (send(client[k], buf, readret, 0) != readret) {
                             close_socket(client[k]);
                             close_socket(sock);
-                            fprintf(stderr, "Error sending to client.\n");
+                            log_write("Error sending to client.\n");
                             exit(EXIT_FAILURE);
                         }
-                        printf("Server sent %d bytes data to %d\n",
+                        log_write("Server sent %d bytes data to %d\n",
                                (int)readret, client[k]);
                         memset(buf, 0, BUF_SIZE);
                     } else {
                         if (readret == 0) {
-                            printf("serve_clients: socket %d hung up\n", client[k]);
+                            log_write("serve_clients: socket %d hung up\n", client[k]);
                         }
                         else {
-                            fprintf(stderr, "serve_clients: recv return -1\n");
+                            log_write("serve_clients: recv return -1\n");
                         }
                         close_socket(client[k]);
                         FD_CLR(client[k], &master);
