@@ -39,9 +39,9 @@ int main(int argc, char *argv[]) {
     char buf[BUF_SIZE];
     int yes = 1;
 
-    http_port = atoi(argv[1]);
-    www_path = atoi(argv[2]);
-    log_file = argv[3];
+    //http_port = atoi(argv[1]);
+    //www_path = atoi(argv[2]);
+    log_file = "test.log";
 
     fprintf(stdout, "----- Echo Server -----\n");
 

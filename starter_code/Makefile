@@ -1,5 +1,5 @@
 echo_server:
-	@gcc echo_server.c -o echo_server -Wall -Werror
+	@gcc -Wall -Werror echo_server.c log.c -o echo_server
 
 echo_client:
 	@gcc echo_client.c -o echo_client -Wall -Werror
