@@ -4,10 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/yuniemao/Documents/CS5450/DistributedSystem/starter_code/echo_client.c" "/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/CMakeFiles/DistributedSystem.dir/starter_code/echo_client.c.o"
-  "/Users/yuniemao/Documents/CS5450/DistributedSystem/starter_code/echo_server.c" "/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/CMakeFiles/DistributedSystem.dir/starter_code/echo_server.c.o"
-  "/Users/yuniemao/Documents/CS5450/DistributedSystem/starter_code/log.c" "/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/CMakeFiles/DistributedSystem.dir/starter_code/log.c.o"
-  "/Users/yuniemao/Documents/CS5450/DistributedSystem/starter_code/server.c" "/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/CMakeFiles/DistributedSystem.dir/starter_code/server.c.o"
+  "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code/echo_client.c" "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug/CMakeFiles/DistributedSystem.dir/starter_code/echo_client.c.o"
+  "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code/echo_server.c" "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug/CMakeFiles/DistributedSystem.dir/starter_code/echo_server.c.o"
+  "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code/log.c" "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug/CMakeFiles/DistributedSystem.dir/starter_code/log.c.o"
+  "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code/server.c" "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug/CMakeFiles/DistributedSystem.dir/starter_code/server.c.o"
+  "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code2/example.c" "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug/CMakeFiles/DistributedSystem.dir/starter_code2/example.c.o"
+  "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code2/parse.c" "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug/CMakeFiles/DistributedSystem.dir/starter_code2/parse.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 

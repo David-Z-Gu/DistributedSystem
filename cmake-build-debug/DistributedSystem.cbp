@@ -8,94 +8,105 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug"/>
+				<Option working_dir="/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/davidgu/Google\ Drive/Academic/Computer\ Science/5450\ -\ Distributed\ System/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/davidgu/Google\ Drive/Academic/Computer\ Science/5450\ -\ Distributed\ System/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/davidgu/Google\ Drive/Academic/Computer\ Science/5450\ -\ Distributed\ System/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/davidgu/Google\ Drive/Academic/Computer\ Science/5450\ -\ Distributed\ System/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug"/>
+				<Option working_dir="/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/davidgu/Google\ Drive/Academic/Computer\ Science/5450\ -\ Distributed\ System/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/davidgu/Google\ Drive/Academic/Computer\ Science/5450\ -\ Distributed\ System/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/davidgu/Google\ Drive/Academic/Computer\ Science/5450\ -\ Distributed\ System/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/davidgu/Google\ Drive/Academic/Computer\ Science/5450\ -\ Distributed\ System/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug"/>
+				<Option working_dir="/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/davidgu/Google\ Drive/Academic/Computer\ Science/5450\ -\ Distributed\ System/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/davidgu/Google\ Drive/Academic/Computer\ Science/5450\ -\ Distributed\ System/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/davidgu/Google\ Drive/Academic/Computer\ Science/5450\ -\ Distributed\ System/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/davidgu/Google\ Drive/Academic/Computer\ Science/5450\ -\ Distributed\ System/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="DistributedSystem">
-				<Option output="/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/DistributedSystem" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug"/>
+				<Option output="/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug/DistributedSystem" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.1.0/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
 					<Add directory="/System/Library/Frameworks"/>
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 DistributedSystem"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/davidgu/Google\ Drive/Academic/Computer\ Science/5450\ -\ Distributed\ System/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 DistributedSystem"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/davidgu/Google\ Drive/Academic/Computer\ Science/5450\ -\ Distributed\ System/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/davidgu/Google\ Drive/Academic/Computer\ Science/5450\ -\ Distributed\ System/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/davidgu/Google\ Drive/Academic/Computer\ Science/5450\ -\ Distributed\ System/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="DistributedSystem/fast">
-				<Option output="/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/DistributedSystem" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug"/>
+				<Option output="/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug/DistributedSystem" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/8.1.0/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
 					<Add directory="/System/Library/Frameworks"/>
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 DistributedSystem/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/davidgu/Google\ Drive/Academic/Computer\ Science/5450\ -\ Distributed\ System/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 DistributedSystem/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/davidgu/Google\ Drive/Academic/Computer\ Science/5450\ -\ Distributed\ System/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/davidgu/Google\ Drive/Academic/Computer\ Science/5450\ -\ Distributed\ System/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/davidgu/Google\ Drive/Academic/Computer\ Science/5450\ -\ Distributed\ System/DistributedSystem/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/yuniemao/Documents/CS5450/DistributedSystem/starter_code/echo_client.c">
+		<Unit filename="/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code/echo_client.c">
 			<Option target="DistributedSystem"/>
 		</Unit>
-		<Unit filename="/Users/yuniemao/Documents/CS5450/DistributedSystem/starter_code/echo_server.c">
+		<Unit filename="/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code/echo_server.c">
 			<Option target="DistributedSystem"/>
 		</Unit>
-		<Unit filename="/Users/yuniemao/Documents/CS5450/DistributedSystem/starter_code/log.c">
+		<Unit filename="/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code/log.c">
 			<Option target="DistributedSystem"/>
 		</Unit>
-		<Unit filename="/Users/yuniemao/Documents/CS5450/DistributedSystem/starter_code/log.h">
+		<Unit filename="/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code/log.h">
 			<Option target="DistributedSystem"/>
 		</Unit>
-		<Unit filename="/Users/yuniemao/Documents/CS5450/DistributedSystem/starter_code/server.c">
+		<Unit filename="/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code/server.c">
 			<Option target="DistributedSystem"/>
 		</Unit>
-		<Unit filename="/Users/yuniemao/Documents/CS5450/DistributedSystem/CMakeLists.txt">
+		<Unit filename="/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code2/example.c">
+			<Option target="DistributedSystem"/>
+		</Unit>
+		<Unit filename="/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code2/parse.c">
+			<Option target="DistributedSystem"/>
+		</Unit>
+		<Unit filename="/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code2/parse.h">
+			<Option target="DistributedSystem"/>
+		</Unit>
+		<Unit filename="/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

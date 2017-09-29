@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/yuniemao/Documents/CS5450/DistributedSystem
+CMAKE_SOURCE_DIR = "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug
+CMAKE_BINARY_DIR = "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/CMakeFiles /Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug/CMakeFiles" "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yuniemao/Documents/CS5450/DistributedSystem/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -231,6 +231,60 @@ starter_code/server.c.s:
 	$(MAKE) -f CMakeFiles/DistributedSystem.dir/build.make CMakeFiles/DistributedSystem.dir/starter_code/server.c.s
 .PHONY : starter_code/server.c.s
 
+starter_code2/example.o: starter_code2/example.c.o
+
+.PHONY : starter_code2/example.o
+
+# target to build an object file
+starter_code2/example.c.o:
+	$(MAKE) -f CMakeFiles/DistributedSystem.dir/build.make CMakeFiles/DistributedSystem.dir/starter_code2/example.c.o
+.PHONY : starter_code2/example.c.o
+
+starter_code2/example.i: starter_code2/example.c.i
+
+.PHONY : starter_code2/example.i
+
+# target to preprocess a source file
+starter_code2/example.c.i:
+	$(MAKE) -f CMakeFiles/DistributedSystem.dir/build.make CMakeFiles/DistributedSystem.dir/starter_code2/example.c.i
+.PHONY : starter_code2/example.c.i
+
+starter_code2/example.s: starter_code2/example.c.s
+
+.PHONY : starter_code2/example.s
+
+# target to generate assembly for a file
+starter_code2/example.c.s:
+	$(MAKE) -f CMakeFiles/DistributedSystem.dir/build.make CMakeFiles/DistributedSystem.dir/starter_code2/example.c.s
+.PHONY : starter_code2/example.c.s
+
+starter_code2/parse.o: starter_code2/parse.c.o
+
+.PHONY : starter_code2/parse.o
+
+# target to build an object file
+starter_code2/parse.c.o:
+	$(MAKE) -f CMakeFiles/DistributedSystem.dir/build.make CMakeFiles/DistributedSystem.dir/starter_code2/parse.c.o
+.PHONY : starter_code2/parse.c.o
+
+starter_code2/parse.i: starter_code2/parse.c.i
+
+.PHONY : starter_code2/parse.i
+
+# target to preprocess a source file
+starter_code2/parse.c.i:
+	$(MAKE) -f CMakeFiles/DistributedSystem.dir/build.make CMakeFiles/DistributedSystem.dir/starter_code2/parse.c.i
+.PHONY : starter_code2/parse.c.i
+
+starter_code2/parse.s: starter_code2/parse.c.s
+
+.PHONY : starter_code2/parse.s
+
+# target to generate assembly for a file
+starter_code2/parse.c.s:
+	$(MAKE) -f CMakeFiles/DistributedSystem.dir/build.make CMakeFiles/DistributedSystem.dir/starter_code2/parse.c.s
+.PHONY : starter_code2/parse.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -252,6 +306,12 @@ help:
 	@echo "... starter_code/server.o"
 	@echo "... starter_code/server.i"
 	@echo "... starter_code/server.s"
+	@echo "... starter_code2/example.o"
+	@echo "... starter_code2/example.i"
+	@echo "... starter_code2/example.s"
+	@echo "... starter_code2/parse.o"
+	@echo "... starter_code2/parse.i"
+	@echo "... starter_code2/parse.s"
 .PHONY : help
 
 

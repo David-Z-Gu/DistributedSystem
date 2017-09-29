@@ -11,6 +11,7 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <unistd.h>
+#include <sys/select.h>
 #include "log.h"
 
 #define ECHO_PORT 9999
@@ -33,15 +34,23 @@ int main(int argc, char *argv[]) {
     int maxfd, max_idx;
     int http_port, www_path;
     char *log_file;
-    ssize_t readret; /*ssize_t = the sizes of blocks that can be read or written in a single operation*/
-    socklen_t cli_size; /*socklen_t = an integral type of at least 32 bits*/
-    struct sockaddr_in addr, cli_addr; /*struct = a user defined data type that allows to combine data items of different kind*/
+    ssize_t readret; //ssize_t = the sizes of blocks that can be read or written in a single operation
+    socklen_t cli_size; //socklen_t = an integral type of at least 32 bits
+    struct sockaddr_in addr, cli_addr; //struct = a user defined data type that allows to combine data items of different kind
     char buf[BUF_SIZE];
     int yes = 1;
 
     //http_port = atoi(argv[1]);
     //www_path = atoi(argv[2]);
     log_file = "test.log";
+
+    /* Get the client address*/
+    struct sockaddr_in* pV4Addr = (struct sockaddr_in*)&cli_addr;
+    struct in_addr ipAddr = pV4Addr->sin_addr;
+    /*Transform the ip address into strings.*/
+    //char str[INET_ADDRSTRLEN];
+    //inet_ntop( AF_INET, &ipAddr, str, INET_ADDRSTRLEN ); //Convert IP addresses to human-readable form
+
 
     fprintf(stdout, "----- Echo Server -----\n");
 
@@ -53,7 +62,7 @@ int main(int argc, char *argv[]) {
     }
 
     addr.sin_family = AF_INET;
-    addr.sin_port = htons(ECHO_PORT); /*htons makes sure that the numbers are stored in memory in network bytes order*/
+    addr.sin_port = htons(ECHO_PORT); //htons makes sure that the numbers are stored in memory in network bytes order
     addr.sin_addr.s_addr = INADDR_ANY;
 
     setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int));
@@ -148,4 +157,10 @@ int main(int argc, char *argv[]) {
             }
         }
     }
+}
+
+void headers(){
+    Server;
+    Date;
+
 }

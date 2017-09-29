@@ -8,6 +8,9 @@ set(SOURCE_FILES
         starter_code/echo_server.c
         starter_code/log.c
         starter_code/log.h
-        starter_code/server.c)
+        starter_code/server.c
+        starter_code2/example.c
+        starter_code2/parse.c
+        starter_code2/parse.h)
 
 add_executable(DistributedSystem ${SOURCE_FILES})

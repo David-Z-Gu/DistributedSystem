@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/DistributedSystem.dir/starter_code/echo_server.c.o"
   "CMakeFiles/DistributedSystem.dir/starter_code/log.c.o"
   "CMakeFiles/DistributedSystem.dir/starter_code/server.c.o"
+  "CMakeFiles/DistributedSystem.dir/starter_code2/example.c.o"
+  "CMakeFiles/DistributedSystem.dir/starter_code2/parse.c.o"
   "DistributedSystem.pdb"
   "DistributedSystem"
 )
