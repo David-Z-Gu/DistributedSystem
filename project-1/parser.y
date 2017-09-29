@@ -200,11 +200,10 @@ request_header: token ows t_colon ows text ows t_crlf {
 	strcpy(parsing_request->headers[parsing_request->header_count].header_value, $5);
 	parsing_request->header_count++;
 
-	// resize space for headers
-
-	// if header count is header capacity of parsing request
-	// multiple header capacity by 2
-	// reallocate memory to headers of parsing request
+    // resize request headers based on header count
+	for (int i=0; i<parsing_request->header_count; i++) {
+		parsing_request->headers = (Request_header *)realloc(parsing_request->headers, sizeof(Request_header)*2);
+	}
 };
 
 
@@ -235,8 +234,6 @@ YPRINTF("parsing_request: Matched Success.\n");return SUCCESS;
 | request_line request_header request_header request_header request_header request_header request_header request_header t_crlf {
 YPRINTF("parsing_request: Matched Success.\n");return SUCCESS;
 };
-
-
 
 %%
 

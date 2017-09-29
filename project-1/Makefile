@@ -1,12 +1,10 @@
 CC=gcc
 CFLAGS=-I.
 DEPS = parse.h y.tab.h log.h
-OBJ = y.tab.o lex.yy.o parse.o lisod.o
-FLAGS = -g -Wall
+OBJ = y.tab.o lex.yy.o parse.o log.o lisod.o
+FLAGS = -g -Wall -Werror
 
-default:all
-
-all: lisod
+default:lisod
 
 lex.yy.c: lexer.l
 	flex $^
@@ -17,11 +15,11 @@ y.tab.c: parser.y
 %.o: %.c $(DEPS)
 	$(CC) $(FLAGS) -c -o $@ $< $(CFLAGS)
 
-example: $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS)
-
 lisod: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
 
+example: y.tab.o lex.yy.o parse.o example.o
+	$(CC) -o $@ $^ $(CFLAGS)
+
 clean:
-	rm -f *~ *.o lisod echo_client log.c log.h lex.yy.c y.tab.c y.tab.h
+	rm -f *~ *.o lisod log.c log.h lex.yy.c y.tab.c y.tab.h

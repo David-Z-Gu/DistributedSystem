@@ -15,15 +15,15 @@
 int log_file;
 
 void log_init(char *file) {
-    printf("%s\n", file);
     if (file == NULL) {
         fprintf(stderr, "can't open output file %s\n", file);
     }
+    //TODO: create file if doesnt exist
     log_file = open(file, O_RDWR);
-    printf("%i\n", log_file);
 }
 
 void log_write(char *fmt, ...) {
+    //TODO: remove printf
     printf("%s\n", fmt);
     char msg[256] = "";
     va_list args;

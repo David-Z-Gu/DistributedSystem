@@ -126,13 +126,13 @@ int main(int argc, char *argv[]) {
                                (int)readret, client[k]);
 
                         // handle request
-                        Request *request = parse(buf, readret);
+                        Request *request = parse(buf, readret, client[k]);
 
                         printf("http method %s\n", request->http_method);
                         printf("http version %s\n", request->http_version);
                         printf("http uri %s\n", request->http_uri);
                         for (i=0; i< request->header_count; i++){
-                            printf("header name %s header value %s\n", request->headers[i].header_name, request->header_value);
+                            printf("header name %s header value %s\n", request->headers[i].header_name, request->headers[i].header_value);
                         }
 
                         // if (send(client[k], request->http_uri, sizeof(request->http_uri, 0) != readret) {
