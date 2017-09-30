@@ -1,21 +1,7 @@
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "C"
   )
 # The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_C
-  "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code/echo_client.c" "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug/CMakeFiles/DistributedSystem.dir/starter_code/echo_client.c.o"
-  "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code/echo_server.c" "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug/CMakeFiles/DistributedSystem.dir/starter_code/echo_server.c.o"
-  "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code/log.c" "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug/CMakeFiles/DistributedSystem.dir/starter_code/log.c.o"
-  "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code/server.c" "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug/CMakeFiles/DistributedSystem.dir/starter_code/server.c.o"
-  "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code2/example.c" "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug/CMakeFiles/DistributedSystem.dir/starter_code2/example.c.o"
-  "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/starter_code2/parse.c" "/Users/davidgu/Google Drive/Academic/Computer Science/5450 - Distributed System/DistributedSystem/cmake-build-debug/CMakeFiles/DistributedSystem.dir/starter_code2/parse.c.o"
-  )
-set(CMAKE_C_COMPILER_ID "AppleClang")
-
-# The include file search paths:
-set(CMAKE_C_TARGET_INCLUDE_PATH
-  )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES

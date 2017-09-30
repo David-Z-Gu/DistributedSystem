@@ -13,6 +13,7 @@
 #include <unistd.h>
 #include <sys/select.h>
 #include "log.h"
+#include "echo_server.h"
 
 #define ECHO_PORT 9999
 #define BUF_SIZE 4096
@@ -159,8 +160,57 @@ int main(int argc, char *argv[]) {
     }
 }
 
-void headers(){
-    Server;
-    Date;
 
+
+int validate_file(int client_fd, HTTPContext *context, int *is_closed)
+{
+    struct stat sbuf;
+
+    // check file existence
+    if (stat(context->filename, &sbuf) < 0)
+    {
+        serve_error(client_fd, "404", "Not Found",
+                    "Server couldn't find this file", *is_closed);
+        return -1;
+    }
+
+    // check file permission
+    if ((!S_ISREG(sbuf.st_mode)) || !(S_IRUSR & sbuf.st_mode))
+    {
+        serve_error(client_fd, "403", "Forbidden",
+                    "Server couldn't read this file", *is_closed);
+        return -1;
+    }
+
+    return 0;
+}
+
+void head(int client_fd, HTTPContext *context, int *is_closed)
+{
+    struct tm tm;
+    struct stat sbuf;
+    time_t now;
+    char   buf[BUF_SIZE], filetype[MIN_LINE], tbuf[MIN_LINE], dbuf[MIN_LINE];
+
+    if (validate_file(client_fd, context, is_closed) < 0) return;
+
+    stat(context->filename, &sbuf);
+    get_filetype(context->filename, filetype);
+
+    // get time string
+    tm = *gmtime(&sbuf.st_mtime);
+    strftime(tbuf, MIN_LINE, "%a, %d %b %Y %H:%M:%S %Z", &tm);
+    now = time(0);
+    tm = *gmtime(&now);
+    strftime(dbuf, MIN_LINE, "%a, %d %b %Y %H:%M:%S %Z", &tm);
+
+    // send response headers to client
+    sprintf(buf, "HTTP/1.1 200 OK\r\n");
+    sprintf(buf, "%sDate: %s\r\n", buf, dbuf);
+    sprintf(buf, "%sServer: Liso/1.0\r\n", buf);
+    if (is_closed) sprintf(buf, "%sConnection: close\r\n", buf);
+    sprintf(buf, "%sContent-Length: %ld\r\n", buf, sbuf.st_size);
+    sprintf(buf, "%sContent-Type: %s\r\n", buf, filetype);
+    sprintf(buf, "%sLast-Modified: %s\r\n\r\n", buf, tbuf);
+    send(client_fd, buf, strlen(buf), 0);
 }

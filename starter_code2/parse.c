@@ -57,6 +57,7 @@ Request * parse(char *buffer, int size, int socketFd) {
       return request;
 		}
 	}
+    //TODO Need to call HEAD, GET, POST here
   //TODO Handle Malformed Requests
   printf("Parsing Failed\n");
 
