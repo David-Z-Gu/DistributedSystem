@@ -20,6 +20,16 @@
 #define HTTP_RESPONSE_SIZE 200000
 #define MAX_FILE_BUF_SIZE 100000
 
+char* HTTP_VERSION = "HTTP/1.1 ";
+char* STATUS_200 = "200 OK\r\n";
+char* STATUS_204 = "204 NO CONTENT\r\n";
+char* STATUS_404 = "404 NOT FOUND\r\n";
+char* STATUS_405 = "405 METHOD NOT ALLOWED\r\n";
+char* STATUS_415 = "415 UNSUPPORTED MEDIA TYPE\r\n";
+char* STATUS_500 = "500 INTERNAL SERVER ERROR\r\n";
+char* STATUS_501 = "501 NOT IMPLEMENTED\r\n";
+char* STATUS_505 = "505 HTTP VERSION NOT SUPPORTED\r\n";
+
 int close_socket(int sock) {
     log_write("closing sock %d\n", sock);
     if (close(sock)) {
@@ -50,6 +60,25 @@ void get_content_type(char *file_ext, char *content_type) {
     }
 }
 
+int check_file_access(char *file_path, char *response) {
+    if (access(file_path, F_OK) == -1) {
+        log_write("cannot access file at %s\n", file_path);
+        // return not found
+        strcat(response, HTTP_VERSION);
+        strcat(response, STATUS_404);
+        strcat(response, "\r\n");
+    }
+    // open uri w readyonly
+    int file = open(file_path, O_RDONLY);
+    if (file == -1) {
+        log_write("can't open file at %s\n", file_path);
+        strcat(response, HTTP_VERSION);
+        strcat(response, STATUS_500);
+        strcat(response, "\r\n");
+    }
+    return file;
+}
+
 void process_head(Request * request, char * response){
     char file_path[BUF_SIZE], content_type[BUF_SIZE];
     size_t content_length;
@@ -59,19 +88,9 @@ void process_head(Request * request, char * response){
     strcat(file_path, "www");
     strcat(file_path, request->http_uri);
 
-    printf("final file name is %s\n", file_path);
-    //ADDED 404
-    if (access(file_path, F_OK) == -1) {
-        printf("cannot access file at %s\n", file_path);
-        serve_error(file_path, "404", "Not Found",
-                    "Server couldn't find this file");
-    }
-
-    // open uri w readyonly
-    int file = open(file_path, O_RDONLY);
-    if (file == -1) {
-        printf("can't open file at %s\n", file_path);
-        //return 501;
+    int file = check_file_access(file_path, response);
+    if (file < 0) {
+        return;
     }
 
     char nbytes[MAX_FILE_BUF_SIZE];
@@ -82,7 +101,9 @@ void process_head(Request * request, char * response){
     get_content_type(request->http_uri, content_type);
 
     // construct response
-    sprintf(response, "HTTP/1.1 200 OK\r\n");
+    //sprintf(response, "HTTP/1.1 200 OK\r\n");
+    strcat(response, HTTP_VERSION);
+    strcat(response, STATUS_200);
     //sprintf(response, "%sDate: %s\r\n", response, dbuf);
     sprintf(response, "%sServer: Liso/1.0\r\n", response);
     //if (is_closed) sprintf(buf, "%sConnection: close\r\n", response);
@@ -105,20 +126,9 @@ void process_get(Request * request, char * response){
     strcat(file_path, "www");
     strcat(file_path, request->http_uri);
 
-    printf("final file name is %s\n", file_path);
-
-    if (access(file_path, F_OK) == -1) {
-        printf("cannot access file at %s\n", file_path);
-        //ADDED 404
-        serve_error(file_path, "404", "Not Found",
-                    "Server couldn't find this file");
-    }
-
-    // open uri w readyonly
-    int file = open(file_path, O_RDONLY);
-    if (file == -1) {
-        printf("can't open file at %s\n", file_path);
-        //return 501;
+    int file = check_file_access(file_path, response);
+    if (file < 0) {
+        return;
     }
 
     char nbytes[MAX_FILE_BUF_SIZE];
@@ -129,7 +139,8 @@ void process_get(Request * request, char * response){
     get_content_type(request->http_uri, content_type);
 
     // construct response
-    sprintf(response, "HTTP/1.1 200 OK\r\n");
+    strcat(response, HTTP_VERSION);
+    strcat(response, STATUS_200);
     //sprintf(response, "%sDate: %s\r\n", response, dbuf);
     sprintf(response, "%sServer: Liso/1.0\r\n", response);
     //if (is_closed) sprintf(buf, "%sConnection: close\r\n", response);
@@ -146,42 +157,21 @@ void process_get(Request * request, char * response){
 }
 
 void process_post(Request * request, char * response){
+    //TODO need to update file for post
     if (access(request->http_uri, F_OK ) == -1) {
-        printf("%s cannot be accessed", request->http_uri);
-        sprintf(response, "HTTP/1.1 204 NO CONTENT\r\n");
+        log_write("%s cannot be accessed", request->http_uri);
+        strcat(response, HTTP_VERSION);
+        strcat(response, STATUS_204);
+        strcat(response, "\r\n");
     }
     else {
         //TODO: more in response headers?
         printf("successful post");
-        sprintf(response, "HTTP/1.1 200 OK\r\n");
+        strcat(response, HTTP_VERSION);
+        strcat(response, STATUS_200);
         sprintf(response, "%sServer: Liso/1.0\r\n", response);
+        strcat(response, "\r\n");
     }
-}
-
-void serve_error(int client_fd, char *errnum, char *shortmsg, char *longmsg) {
-    struct tm tm;
-    time_t now;
-    char buf[MAX_LINE], body[MAX_LINE], dbuf[MIN_LINE];
-
-    now = time(0);
-    tm = *gmtime(&now);
-    strftime(dbuf, MIN_LINE, "%a, %d %b %Y %H:%M:%S %Z", &tm);
-
-    // build HTTP response body
-    sprintf(body, "<html><title>Lisod Error</title>");
-    sprintf(body, "%s<body>\r\n", body);
-    sprintf(body, "%sError %s -- %s\r\n", body, errnum, shortmsg);
-    sprintf(body, "%s<br><p>%s</p></body></html>\r\n", body, longmsg);
-
-    // print HTTP response
-    sprintf(buf, "HTTP/1.1 %s %s\r\n", errnum, shortmsg);
-    sprintf(buf, "%sDate: %s\r\n", buf, dbuf);
-    sprintf(buf, "%sServer: Liso/1.0\r\n", buf);
-    //if (is_closed) sprintf(buf, "%sConnection: close\r\n", buf);
-    sprintf(buf, "%sContent-type: text/html\r\n", buf);
-    sprintf(buf, "%sContent-length: %d\r\n\r\n", buf, (int)strlen(body));
-    send(client_fd, buf, strlen(buf), 0);
-    send(client_fd, body, strlen(body), 0);
 }
 
 int main(int argc, char *argv[]) {
@@ -219,10 +209,7 @@ int main(int argc, char *argv[]) {
     setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int));
 
     /* servers bind sockets to ports---notify the OS they accept connections */
-    if (bind(sock, (struct sockaddr *) &addr, sizeof(addr)) < 0) /*bind(int sockfd, struct sockaddr *my_addr,int addrlen); function assigns a local protocol address to a socket. The protocol address is the combination of either a IPv4 or IPv6 address, along with a 16-bit port number. */
-    /*sockfd: a socket descriptor returned by the socket function.
-      my_addr − It is a pointer to struct sockaddr that contains the local IP address and port.
-      addrlen − Set it to sizeof(struct sockaddr).*/
+    if (bind(sock, (struct sockaddr *) &addr, sizeof(addr)) < 0)
     {
         close_socket(sock);
         fprintf(stderr, "Failed binding socket.\n");
@@ -230,7 +217,7 @@ int main(int argc, char *argv[]) {
     }
 
 
-    if (listen(sock, 5) < 0)/*listen(int sockfd,int backlog); converts an unconnected socket into a passive socket, indicating that the kernel should accept incoming connection requests directed to this socket.*/
+    if (listen(sock, 5) < 0)
     /*backlog - the number of allowed connections.*/
     {
         close_socket(sock);
@@ -286,6 +273,7 @@ int main(int argc, char *argv[]) {
 
                         // handle request
                         Request *request = parse(buf, readret, client[k]);
+                        char * response = malloc(20000);
 
                         if (request == NULL) {
                             log_write("Bad Request. Request cannot be parsed!");
@@ -298,8 +286,6 @@ int main(int argc, char *argv[]) {
                         for (i=0; i< request->header_count; i++){
                             printf("header name %s header value %s\n", request->headers[i].header_name, request->headers[i].header_value);
                         }
-
-                        char * response = malloc(20000);
 
                         if (strcmp(request->http_method, "HEAD") == 0) {
                             fprintf(stdout, "encountered a HEAD request\n");
@@ -319,7 +305,6 @@ int main(int argc, char *argv[]) {
                         printf("response size is %lu\n", strlen(response));
                         printf("response is %s\n", response);
                         if (send(client[k], response, strlen(response), 0) < 0) {
-                        //if (send(client[k], buf, readret, 0) != readret) {
                             close_socket(client[k]);
                             close_socket(sock);
                             log_write("Error sending to client.\n");
@@ -327,7 +312,6 @@ int main(int argc, char *argv[]) {
                         }
                         log_write("Server sent %d bytes data to %d\n",
                                strlen(response), client[k]);
-                        //memset(buf, 0, BUF_SIZE);
                         free(response);
                     } else {
                         if (readret == 0) {
