@@ -14,12 +14,14 @@
 #include <fcntl.h>
 #include "log.h"
 #include "parse.h"
+<<<<<<< HEAD
 #include <arpa/inet.h>
+=======
+#include "process_request.h"
+>>>>>>> 7f71dbb677470bbec27570681c90e61070dd4985
 
 #define ECHO_PORT 9999
 #define BUF_SIZE 4096
-#define HTTP_RESPONSE_SIZE 200000
-#define MAX_FILE_BUF_SIZE 100000
 
 int close_socket(int sock) {
     log_write("closing sock %d\n", sock);
@@ -30,6 +32,7 @@ int close_socket(int sock) {
     return 0;
 }
 
+<<<<<<< HEAD
 void get_content_type(char *file_ext, char *content_type) {
     if (strstr(file_ext, ".html")) {
         strcpy(content_type, "text/html");
@@ -194,6 +197,8 @@ void serve_error(int client_fd, char *errnum, char *shortmsg, char *longmsg) {
     send(client_fd, body, strlen(body), 0);
 }
 */
+=======
+>>>>>>> 7f71dbb677470bbec27570681c90e61070dd4985
 int main(int argc, char *argv[]) {
     fd_set master, read_fds; // master and temp list for select()
     int sock, client_sock; //listening socket descriptor and newly accepted socket descriptor
@@ -218,7 +223,7 @@ int main(int argc, char *argv[]) {
     /* all networked programs must create a socket */
     if ((sock = socket(AF_INET, SOCK_STREAM, 0)) == -1) /*socket(int domain, int type, int protocol); call creates an endpoint for communication and return a descriptor*/
     {
-        fprintf(stderr, "Failed creating socket.\n");
+        log_write("Failed creating socket.\n");
         return EXIT_FAILURE;
     }
 
@@ -229,22 +234,19 @@ int main(int argc, char *argv[]) {
     setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int));
 
     /* servers bind sockets to ports---notify the OS they accept connections */
-    if (bind(sock, (struct sockaddr *) &addr, sizeof(addr)) < 0) /*bind(int sockfd, struct sockaddr *my_addr,int addrlen); function assigns a local protocol address to a socket. The protocol address is the combination of either a IPv4 or IPv6 address, along with a 16-bit port number. */
-    /*sockfd: a socket descriptor returned by the socket function.
-      my_addr − It is a pointer to struct sockaddr that contains the local IP address and port.
-      addrlen − Set it to sizeof(struct sockaddr).*/
+    if (bind(sock, (struct sockaddr *) &addr, sizeof(addr)) < 0)
     {
         close_socket(sock);
-        fprintf(stderr, "Failed binding socket.\n");
+        log_write("Failed binding socket.\n");
         return EXIT_FAILURE;
     }
 
 
-    if (listen(sock, 5) < 0)/*listen(int sockfd,int backlog); converts an unconnected socket into a passive socket, indicating that the kernel should accept incoming connection requests directed to this socket.*/
+    if (listen(sock, 5) < 0)
     /*backlog - the number of allowed connections.*/
     {
         close_socket(sock);
-        fprintf(stderr, "Error listening on socket.\n");
+        log_write("Error listening on socket.\n");
         return EXIT_FAILURE;
     }
 
@@ -300,11 +302,11 @@ int main(int argc, char *argv[]) {
                 if (client[k] > 0 && FD_ISSET(client[k], &read_fds)) {
                     nready--;
                     if ((readret = read(client[k], buf, BUF_SIZE)) > 1) {
-                        log_write("Server received %d bytes data on %d\n",
-                               (int)readret, client[k]);
+                        log_write("Server received %d bytes data on %d\n", (int)readret, client[k]);
 
                         // handle request
                         Request *request = parse(buf, readret, client[k]);
+<<<<<<< HEAD
 
                         if (request == NULL) {
                             log_write("Bad Request. Request cannot be parsed!");
@@ -343,17 +345,20 @@ int main(int argc, char *argv[]) {
                                         */
                         }
                         printf("response size is %lu\n", strlen(response));
+=======
+                        char * response = malloc(20000);
+
+                        process_http_request(request, response);
+
+>>>>>>> 7f71dbb677470bbec27570681c90e61070dd4985
                         printf("response is %s\n", response);
                         if (send(client[k], response, strlen(response), 0) < 0) {
-                        //if (send(client[k], buf, readret, 0) != readret) {
                             close_socket(client[k]);
                             close_socket(sock);
                             log_write("Error sending to client.\n");
                             exit(EXIT_FAILURE);
                         }
-                        log_write("Server sent %d bytes data to %d\n",
-                               strlen(response), client[k]);
-                        //memset(buf, 0, BUF_SIZE);
+                        log_write("Server sent %d bytes data to %d\n", strlen(response), client[k]);
                         free(response);
                     } else {
                         if (readret == 0) {
