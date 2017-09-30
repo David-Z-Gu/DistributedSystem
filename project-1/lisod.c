@@ -60,10 +60,11 @@ void process_head(Request * request, char * response){
     strcat(file_path, request->http_uri);
 
     printf("final file name is %s\n", file_path);
-
+    //ADDED 404
     if (access(file_path, F_OK) == -1) {
         printf("cannot access file at %s\n", file_path);
-        //TODO: return 404
+        serve_error(file_path, "404", "Not Found",
+                    "Server couldn't find this file");
     }
 
     // open uri w readyonly
@@ -108,7 +109,9 @@ void process_get(Request * request, char * response){
 
     if (access(file_path, F_OK) == -1) {
         printf("cannot access file at %s\n", file_path);
-        //TODO: return 404
+        //ADDED 404
+        serve_error(file_path, "404", "Not Found",
+                    "Server couldn't find this file");
     }
 
     // open uri w readyonly
@@ -155,7 +158,31 @@ void process_post(Request * request, char * response){
     }
 }
 
+void serve_error(int client_fd, char *errnum, char *shortmsg, char *longmsg) {
+    struct tm tm;
+    time_t now;
+    char buf[MAX_LINE], body[MAX_LINE], dbuf[MIN_LINE];
 
+    now = time(0);
+    tm = *gmtime(&now);
+    strftime(dbuf, MIN_LINE, "%a, %d %b %Y %H:%M:%S %Z", &tm);
+
+    // build HTTP response body
+    sprintf(body, "<html><title>Lisod Error</title>");
+    sprintf(body, "%s<body>\r\n", body);
+    sprintf(body, "%sError %s -- %s\r\n", body, errnum, shortmsg);
+    sprintf(body, "%s<br><p>%s</p></body></html>\r\n", body, longmsg);
+
+    // print HTTP response
+    sprintf(buf, "HTTP/1.1 %s %s\r\n", errnum, shortmsg);
+    sprintf(buf, "%sDate: %s\r\n", buf, dbuf);
+    sprintf(buf, "%sServer: Liso/1.0\r\n", buf);
+    //if (is_closed) sprintf(buf, "%sConnection: close\r\n", buf);
+    sprintf(buf, "%sContent-type: text/html\r\n", buf);
+    sprintf(buf, "%sContent-length: %d\r\n\r\n", buf, (int)strlen(body));
+    send(client_fd, buf, strlen(buf), 0);
+    send(client_fd, body, strlen(body), 0);
+}
 
 int main(int argc, char *argv[]) {
     fd_set master, read_fds; // master and temp list for select()

@@ -162,21 +162,6 @@ int main(int argc, char *argv[]) {
 
 
 
-int validate_file(int client_fd, HTTPContext *context, int *is_closed)
-{
-    struct stat sbuf;
-
-    // check file existence
-    if (stat(context->filename, &sbuf) < 0)
-    {
-        serve_error(client_fd, "404", "Not Found",
-                    "Server couldn't find this file", *is_closed);
-        return -1;
-    }
-
-    return 0;
-}
-
 void head(int client_fd, HTTPContext *context, int *is_closed)
 {
     struct tm tm;
@@ -207,6 +192,21 @@ void head(int client_fd, HTTPContext *context, int *is_closed)
     send(client_fd, buf, strlen(buf), 0);
 }
 
+int validate_file(int client_fd, HTTPContext *context, int *is_closed)
+{
+    struct stat sbuf;
+
+    // check file existence
+    if (stat(context->filename, &sbuf) < 0)
+    {
+        serve_error(client_fd, "404", "Not Found",
+                    "Server couldn't find this file", *is_closed);
+        return -1;
+    }
+
+    return 0;
+}
+
 void serve_error(int client_fd, char *errnum, char *shortmsg, char *longmsg,
                  int is_closed) {
     struct tm tm;
@@ -234,4 +234,4 @@ void serve_error(int client_fd, char *errnum, char *shortmsg, char *longmsg,
     send(client_fd, body, strlen(body), 0);
 }
 
-//TODO ADD RECV() FUNCTION 
+//TODO ADD RECV() FUNCTION
