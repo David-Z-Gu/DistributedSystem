@@ -23,8 +23,10 @@
 char* HTTP_VERSION = "HTTP/1.1 ";
 char* STATUS_200 = "200 OK\r\n";
 char* STATUS_204 = "204 NO CONTENT\r\n";
+char* STATUS_400 = "400 BAD REQUEST\r\n";
 char* STATUS_404 = "404 NOT FOUND\r\n";
 char* STATUS_405 = "405 METHOD NOT ALLOWED\r\n";
+char* STATUS_411 = "411 Length REQUIRED\r\n";
 char* STATUS_415 = "415 UNSUPPORTED MEDIA TYPE\r\n";
 char* STATUS_500 = "500 INTERNAL SERVER ERROR\r\n";
 char* STATUS_501 = "501 NOT IMPLEMENTED\r\n";
@@ -157,21 +159,44 @@ void process_get(Request * request, char * response){
 }
 
 void process_post(Request * request, char * response){
-    //TODO need to update file for post
-    if (access(request->http_uri, F_OK ) == -1) {
-        log_write("%s cannot be accessed", request->http_uri);
-        strcat(response, HTTP_VERSION);
-        strcat(response, STATUS_204);
-        strcat(response, "\r\n");
+    char file_path[BUF_SIZE];
+
+    fprintf(stdout, "req uri %s\n", request->http_uri);
+    // get request uri to get location of file
+    strcat(file_path, "www");
+    strcat(file_path, request->http_uri);
+
+    int file = check_file_access(file_path, response);
+    if (file < 0) {
+        return;
     }
-    else {
-        //TODO: more in response headers?
-        printf("successful post");
-        strcat(response, HTTP_VERSION);
-        strcat(response, STATUS_200);
-        sprintf(response, "%sServer: Liso/1.0\r\n", response);
-        strcat(response, "\r\n");
+
+    char * content_length;
+    // get content-length from header
+    for (int i=0; i< request->header_count; i++){
+        if (strcmp(request->headers[i].header_name, "Content-Length") || strcmp(request->headers[i].header_name, "content-length")){
+            content_length = request->headers[i].header_value;
+        }
     }
+
+    if (content_length == NULL) {
+        // return 411
+        strcat(response, HTTP_VERSION);
+        strcat(response, STATUS_411);
+        strcat(response, "\r\n");
+        return;
+    }
+
+    // process body of post??
+
+    printf("successful post");
+    strcat(response, HTTP_VERSION);
+    strcat(response, STATUS_200);
+    sprintf(response, "%sServer: Liso/1.0\r\n", response);
+    sprintf(response, "%sContent-Length: %s\r\n", response, content_length);
+    strcat(response, "\r\n");
+
+    memset(file_path, 0, BUF_SIZE);
 }
 
 int main(int argc, char *argv[]) {
@@ -276,15 +301,19 @@ int main(int argc, char *argv[]) {
                         char * response = malloc(20000);
 
                         if (request == NULL) {
-                            log_write("Bad Request. Request cannot be parsed!");
-                            //TODO: response with 400?
+                            log_write("Bad Request. Request cannot be parsed!\n");
+                            strcat(response, HTTP_VERSION);
+                            strcat(response, STATUS_400);
+                            strcat(response, "\r\n");
                             break;
                         }
-//                        printf("http method %s\n", request->http_method);
-//                        printf("http version %s\n", request->http_version);
-//                        printf("http uri %s\n", request->http_uri);
-                        for (i=0; i< request->header_count; i++){
-                            printf("header name %s header value %s\n", request->headers[i].header_name, request->headers[i].header_value);
+
+                        if (!strcmp(request->http_version, HTTP_VERSION)) {
+                            log_write("HTTP Version %s not supported.", request->http_version);
+                            strcat(response, HTTP_VERSION);
+                            strcat(response, STATUS_505);
+                            strcat(response, "\r\n");
+                            break;
                         }
 
                         if (strcmp(request->http_method, "HEAD") == 0) {
@@ -301,6 +330,9 @@ int main(int argc, char *argv[]) {
                         }
                         else {
                             fprintf(stdout, "Response with 501");
+                            strcat(response, HTTP_VERSION);
+                            strcat(response, STATUS_501);
+                            strcat(response, "\r\n");
                         }
                         printf("response size is %lu\n", strlen(response));
                         printf("response is %s\n", response);
