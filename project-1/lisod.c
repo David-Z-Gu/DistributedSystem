@@ -88,6 +88,7 @@ void process_head(Request * request, char * response){
     sprintf(response, "%sContent-Length: %ld\r\n", response, content_length);
     sprintf(response, "%sContent-Type: %s\r\n", response, content_type);
     //sprintf(buf, "%sLast-Modified: %s\r\n\r\n", buf, tbuf);
+    strcat(response, "\r\n");
 
     memset(file_path, 0, BUF_SIZE);
     memset(nbytes, 0, MAX_FILE_BUF_SIZE);
@@ -132,6 +133,7 @@ void process_get(Request * request, char * response){
     sprintf(response, "%sContent-Length: %ld\r\n", response, content_length);
     sprintf(response, "%sContent-Type: %s\r\n", response, content_type);
     //sprintf(buf, "%sLast-Modified: %s\r\n\r\n", buf, tbuf);
+    strcat(response, "\r\n");
 
     strcat(response, nbytes);
 
@@ -143,13 +145,13 @@ void process_get(Request * request, char * response){
 void process_post(Request * request, char * response){
     if (access(request->http_uri, F_OK ) == -1) {
         printf("%s cannot be accessed", request->http_uri);
-        //TODO: return 404
-        strcat(response, "204");
+        sprintf(response, "HTTP/1.1 204 NO CONTENT\r\n");
     }
     else {
-        //TODO: return 200
+        //TODO: more in response headers?
         printf("successful post");
-        strcat(response, "200");
+        sprintf(response, "HTTP/1.1 200 OK\r\n");
+        sprintf(response, "%sServer: Liso/1.0\r\n", response);
     }
 }
 
@@ -174,7 +176,7 @@ int main(int argc, char *argv[]) {
     www_path = "www/";
     log_file = "test.log";
 
-    fprintf(stdout, "----- Echo Server -----\n");
+    fprintf(stdout, "----- Lisod Server -----\n");
 
     /* all networked programs must create a socket */
     if ((sock = socket(AF_INET, SOCK_STREAM, 0)) == -1) /*socket(int domain, int type, int protocol); call creates an endpoint for communication and return a descriptor*/
