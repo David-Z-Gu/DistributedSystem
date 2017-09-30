@@ -15,11 +15,10 @@
 int log_file;
 
 void log_init(char *file) {
+    log_file = open(file, O_RDWR | O_CREAT);
     if (file == NULL) {
         fprintf(stderr, "can't open output file %s\n", file);
     }
-    //TODO: create file if doesnt exist
-    log_file = open(file, O_RDWR);
 }
 
 void log_write(char *fmt, ...) {
