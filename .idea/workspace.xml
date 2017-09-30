@@ -13,7 +13,9 @@
   <component name="ChangeListManager">
     <list default="true" id="332190d7-94d8-4dca-b13d-5ef4cf6ddab9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project-1/Makefile" afterPath="$PROJECT_DIR$/project-1/Makefile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project-1/lisod.c" afterPath="$PROJECT_DIR$/project-1/lisod.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project-1/lowlevelhttptests.py" afterPath="$PROJECT_DIR$/project-1/lowlevelhttptests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/starter_code/echo_server.c" afterPath="$PROJECT_DIR$/starter_code/echo_server.c" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -39,20 +41,10 @@
       <file leaf-file-name="log.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project-1/log.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="echo_server.c" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/starter_code/echo_server.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="209" column="0" lean-forward="false" selection-start-line="209" selection-start-column="0" selection-end-line="234" selection-end-column="1" />
+            <state relative-caret-position="210">
+              <caret line="14" column="13" lean-forward="true" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
               <folding>
-                <element signature="e#168#191#0" expanded="true" />
+                <element signature="e#42#59#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -61,8 +53,8 @@
       <file leaf-file-name="lisod.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/project-1/lisod.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2397">
-              <caret line="111" column="19" lean-forward="false" selection-start-line="111" selection-start-column="19" selection-end-line="111" selection-end-column="19" />
+            <state relative-caret-position="329">
+              <caret line="287" column="46" lean-forward="true" selection-start-line="287" selection-start-column="46" selection-end-line="287" selection-end-column="46" />
               <folding>
                 <element signature="e#168#191#0" expanded="true" />
               </folding>
@@ -70,11 +62,33 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="lowlevelhttptests.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project-1/lowlevelhttptests.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="217">
+              <caret line="29" column="14" lean-forward="false" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
+              <folding>
+                <element signature="e#22#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Makefile" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project-1/Makefile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="parse.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/starter_code2/parse.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="19" column="26" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+            <state relative-caret-position="390">
+              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -102,6 +116,14 @@
       <find>client</find>
       <find>send</find>
       <find>access</find>
+      <find>read</find>
+      <find>is_closed</find>
+      <find>MAX_FILE_BUF_SIZE</find>
+      <find>process_head</find>
+      <find>serve_error</find>
+      <find>check_corr</find>
+      <find>log</find>
+      <find>process</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -118,6 +140,8 @@
         <option value="$PROJECT_DIR$/starter_code2/parse.c" />
         <option value="$PROJECT_DIR$/starter_code/static_site/echo_server.h" />
         <option value="$PROJECT_DIR$/starter_code/echo_server.c" />
+        <option value="$PROJECT_DIR$/project-1/Makefile" />
+        <option value="$PROJECT_DIR$/project-1/lowlevelhttptests.py" />
         <option value="$PROJECT_DIR$/project-1/lisod.c" />
       </list>
     </option>
@@ -129,11 +153,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="93" />
-    <option name="y" value="97" />
-    <option name="width" value="1347" />
-    <option name="height" value="740" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="797" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -164,22 +187,6 @@
               <item name="DistributedSystem" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
               <item name="DistributedSystem" type="462c0819:PsiDirectoryNode" />
               <item name="project-1" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DistributedSystem" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
-              <item name="DistributedSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="starter_code" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DistributedSystem" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
-              <item name="DistributedSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="starter_code" type="462c0819:PsiDirectoryNode" />
-              <item name="static_site" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DistributedSystem" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
-              <item name="DistributedSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="starter_code2" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -242,15 +249,15 @@
       <workItem from="1506396218421" duration="5244000" />
       <workItem from="1506437882004" duration="3406000" />
       <workItem from="1506710698383" duration="34000" />
-      <workItem from="1506710762707" duration="10028000" />
+      <workItem from="1506710762707" duration="20942000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18712000" />
+    <option name="totallyTimeSpent" value="29626000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="797" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="797" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23014106" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -303,7 +310,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -445,44 +452,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/starter_code2/parse.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="19" column="26" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/starter_code/echo_client.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-365">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding>
-            <element signature="e#882#900#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/starter_code/echo_server.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="27" lean-forward="false" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project-1/log.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -497,20 +470,84 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/starter_code/echo_client.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#882#900#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project-1/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project-1/liso_prototype.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#23#32#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/starter_code/echo_server.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="209" column="0" lean-forward="false" selection-start-line="209" selection-start-column="0" selection-end-line="234" selection-end-column="1" />
+        <state relative-caret-position="382">
+          <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding>
             <element signature="e#168#191#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="27" lean-forward="false" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project-1/lowlevelhttptests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="29" column="14" lean-forward="false" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
+          <folding>
+            <element signature="e#22#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/starter_code2/parse.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project-1/log.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="13" lean-forward="true" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="e#42#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/project-1/lisod.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2397">
-          <caret line="111" column="19" lean-forward="false" selection-start-line="111" selection-start-column="19" selection-end-line="111" selection-end-column="19" />
+        <state relative-caret-position="329">
+          <caret line="287" column="46" lean-forward="true" selection-start-line="287" selection-start-column="46" selection-end-line="287" selection-end-column="46" />
           <folding>
             <element signature="e#168#191#0" expanded="true" />
           </folding>

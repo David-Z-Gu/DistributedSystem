@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import socket
-from autograde.http_parser.pyparser import HttpParser
+from http_parser.pyparser import HttpParser
 
 def check_correct_HEAD(host, port):
     #Check if HEAD only returns header but not body
@@ -9,10 +9,12 @@ def check_correct_HEAD(host, port):
     rc_is_headers_complete = False
     rc_no_more_data = True
     try:
+        print "1"
         s.connect((host, port))
         s.settimeout(1)
         s.send("HEAD /index.html HTTP/1.1\r\nHost: %s:%d\
             \r\nConnection:Keep-Alive\r\n\r\n" % (host, port))
+        print "2 ",s
         while True:
             data = s.recv(1024)
             print ('data', data);

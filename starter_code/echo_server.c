@@ -49,8 +49,8 @@ int main(int argc, char *argv[]) {
     struct sockaddr_in* pV4Addr = (struct sockaddr_in*)&cli_addr;
     struct in_addr ipAddr = pV4Addr->sin_addr;
     /*Transform the ip address into strings.*/
-    //char str[INET_ADDRSTRLEN];
-    //inet_ntop( AF_INET, &ipAddr, str, INET_ADDRSTRLEN ); //Convert IP addresses to human-readable form
+    char str[INET_ADDRSTRLEN];
+    inet_ntop( AF_INET, &ipAddr, str, INET_ADDRSTRLEN ); //Convert IP addresses to human-readable form
 
 
     fprintf(stdout, "----- Echo Server -----\n");

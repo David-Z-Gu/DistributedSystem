@@ -14,6 +14,7 @@
 #include <fcntl.h>
 #include "log.h"
 #include "parse.h"
+#include <arpa/inet.h>
 
 #define ECHO_PORT 9999
 #define BUF_SIZE 4096
@@ -63,15 +64,20 @@ void process_head(Request * request, char * response){
     //ADDED 404
     if (access(file_path, F_OK) == -1) {
         printf("cannot access file at %s\n", file_path);
+        /*
         serve_error(file_path, "404", "Not Found",
                     "Server couldn't find this file");
+                    */
     }
-
-    // open uri w readyonly
     int file = open(file_path, O_RDONLY);
-    if (file == -1) {
+    // open uri w read only
+    if ( file == -1) {
         printf("can't open file at %s\n", file_path);
-        //return 501;
+        //ADDED 501
+        /*
+        serve_error(file_path, "501", "Not Implemented",
+                    "The method is not valid or not implemented by the server");
+                    */
     }
 
     char nbytes[MAX_FILE_BUF_SIZE];
@@ -83,12 +89,10 @@ void process_head(Request * request, char * response){
 
     // construct response
     sprintf(response, "HTTP/1.1 200 OK\r\n");
-    //sprintf(response, "%sDate: %s\r\n", response, dbuf);
     sprintf(response, "%sServer: Liso/1.0\r\n", response);
     //if (is_closed) sprintf(buf, "%sConnection: close\r\n", response);
     sprintf(response, "%sContent-Length: %ld\r\n", response, content_length);
     sprintf(response, "%sContent-Type: %s\r\n", response, content_type);
-    //sprintf(buf, "%sLast-Modified: %s\r\n\r\n", buf, tbuf);
     strcat(response, "\r\n");
 
     memset(file_path, 0, BUF_SIZE);
@@ -110,15 +114,22 @@ void process_get(Request * request, char * response){
     if (access(file_path, F_OK) == -1) {
         printf("cannot access file at %s\n", file_path);
         //ADDED 404
-        serve_error(file_path, "404", "Not Found",
+        /*
+         * serve_error(file_path, "404", "Not Found",
                     "Server couldn't find this file");
+         */
     }
 
-    // open uri w readyonly
+    // open uri w read only
     int file = open(file_path, O_RDONLY);
     if (file == -1) {
         printf("can't open file at %s\n", file_path);
-        //return 501;
+        //ADDED 501
+        /*
+        serve_error(file_path, "501", "Not Implemented",
+                    "The method is not valid or not implemented by the server");
+         */
+
     }
 
     char nbytes[MAX_FILE_BUF_SIZE];
@@ -130,12 +141,10 @@ void process_get(Request * request, char * response){
 
     // construct response
     sprintf(response, "HTTP/1.1 200 OK\r\n");
-    //sprintf(response, "%sDate: %s\r\n", response, dbuf);
     sprintf(response, "%sServer: Liso/1.0\r\n", response);
     //if (is_closed) sprintf(buf, "%sConnection: close\r\n", response);
     sprintf(response, "%sContent-Length: %ld\r\n", response, content_length);
     sprintf(response, "%sContent-Type: %s\r\n", response, content_type);
-    //sprintf(buf, "%sLast-Modified: %s\r\n\r\n", buf, tbuf);
     strcat(response, "\r\n");
 
     strcat(response, nbytes);
@@ -157,12 +166,13 @@ void process_post(Request * request, char * response){
         sprintf(response, "%sServer: Liso/1.0\r\n", response);
     }
 }
-
+/*
 void serve_error(int client_fd, char *errnum, char *shortmsg, char *longmsg) {
     struct tm tm;
     time_t now;
     char buf[MAX_LINE], body[MAX_LINE], dbuf[MIN_LINE];
-
+    //TODO: return 'connection', 'date', and 'server' headers in head/get/post; return 'content-length' in post
+    //TODO: last modified
     now = time(0);
     tm = *gmtime(&now);
     strftime(dbuf, MIN_LINE, "%a, %d %b %Y %H:%M:%S %Z", &tm);
@@ -183,7 +193,7 @@ void serve_error(int client_fd, char *errnum, char *shortmsg, char *longmsg) {
     send(client_fd, buf, strlen(buf), 0);
     send(client_fd, body, strlen(body), 0);
 }
-
+*/
 int main(int argc, char *argv[]) {
     fd_set master, read_fds; // master and temp list for select()
     int sock, client_sock; //listening socket descriptor and newly accepted socket descriptor
@@ -260,6 +270,15 @@ int main(int argc, char *argv[]) {
         if (FD_ISSET(sock, &read_fds)) {
             cli_size = sizeof(cli_addr);
             client_sock = accept(sock, (struct sockaddr *) &cli_addr, &cli_size);
+            /* Get the client address*/
+            struct sockaddr_in* pV4Addr = (struct sockaddr_in*)&cli_addr;
+            struct in_addr ipAddr = pV4Addr->sin_addr;
+            printf("CLIENT IP ADDR %d", ipAddr);
+            /*Transform the ip address into strings.*/
+            char str[INET_ADDRSTRLEN];
+
+            printf("Client IP address is %s",inet_ntop( AF_INET, &ipAddr, str, INET_ADDRSTRLEN ));//Convert IP addresses to human-readable form
+
             nready--;
             for (j = 0; j <= FD_SETSIZE; j++) {
                 if (client[j] < 0) {
@@ -289,7 +308,11 @@ int main(int argc, char *argv[]) {
 
                         if (request == NULL) {
                             log_write("Bad Request. Request cannot be parsed!");
-                            //TODO: response with 400?
+                            //ADDED 400
+                            /*
+                            serve_error(client[k], "400", "Bad Request",
+                                        "Request cannot be parsed!");
+                                        */
                             break;
                         }
 //                        printf("http method %s\n", request->http_method);
@@ -315,6 +338,9 @@ int main(int argc, char *argv[]) {
                         }
                         else {
                             fprintf(stdout, "Response with 501");
+                            /*serve_error(client[k], "501", "Not Implemented",
+                                        "The method is not valid or not implemented by the server");
+                                        */
                         }
                         printf("response size is %lu\n", strlen(response));
                         printf("response is %s\n", response);
@@ -334,7 +360,6 @@ int main(int argc, char *argv[]) {
                             log_write("serve_clients: socket %d hung up\n", client[k]);
                         }
                         else {
-                            log_write("serve_clients: recv return -1\n");
                         }
                         close_socket(client[k]);
                         FD_CLR(client[k], &master);

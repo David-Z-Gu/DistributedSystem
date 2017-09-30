@@ -2,7 +2,7 @@ CC=gcc
 CFLAGS=-I.
 DEPS = parse.h y.tab.h log.h
 OBJ = y.tab.o lex.yy.o parse.o log.o lisod.o
-FLAGS = -g -Wall -Werror
+FLAGS = -g -Wall
 
 default:lisod
 
