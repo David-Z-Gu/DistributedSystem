@@ -12,20 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="332190d7-94d8-4dca-b13d-5ef4cf6ddab9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/starter_code/echo_server.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DistributedSystem.dir/DependInfo.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DistributedSystem.dir/DependInfo.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DistributedSystem.dir/build.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DistributedSystem.dir/build.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DistributedSystem.dir/cmake_clean.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DistributedSystem.dir/cmake_clean.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DistributedSystem.dir/flags.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DistributedSystem.dir/flags.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DistributedSystem.dir/progress.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DistributedSystem.dir/progress.make" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/DistributedSystem.cbp" afterPath="$PROJECT_DIR$/cmake-build-debug/DistributedSystem.cbp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/starter_code/echo_server.c" afterPath="$PROJECT_DIR$/starter_code/echo_server.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/starter_code2/parse.c" afterPath="$PROJECT_DIR$/starter_code2/parse.c" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -62,8 +49,8 @@
       <file leaf-file-name="echo_server.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/starter_code/echo_server.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="192" column="38" lean-forward="false" selection-start-line="192" selection-start-column="38" selection-end-line="192" selection-end-column="38" />
+            <state relative-caret-position="613">
+              <caret line="236" column="27" lean-forward="false" selection-start-line="236" selection-start-column="27" selection-end-line="236" selection-end-column="27" />
               <folding>
                 <element signature="e#168#191#0" expanded="true" />
               </folding>
@@ -111,6 +98,7 @@
       <find>recv</find>
       <find>rec</find>
       <find>client</find>
+      <find>send</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -245,12 +233,12 @@
       <workItem from="1506396218421" duration="5244000" />
       <workItem from="1506437882004" duration="3406000" />
       <workItem from="1506710698383" duration="34000" />
-      <workItem from="1506710762707" duration="7473000" />
+      <workItem from="1506710762707" duration="8851000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16157000" />
+    <option name="totallyTimeSpent" value="17535000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="797" extended-state="6" />
@@ -492,8 +480,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/starter_code/echo_server.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="192" column="38" lean-forward="false" selection-start-line="192" selection-start-column="38" selection-end-line="192" selection-end-column="38" />
+        <state relative-caret-position="613">
+          <caret line="236" column="27" lean-forward="false" selection-start-line="236" selection-start-column="27" selection-end-line="236" selection-end-column="27" />
           <folding>
             <element signature="e#168#191#0" expanded="true" />
           </folding>
