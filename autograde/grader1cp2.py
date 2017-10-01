@@ -274,9 +274,10 @@ class project1cp2grader(grader):
         #self.scores['test_apache_bench'] = 0
 
     def setUp(self):
-        self.port = random.randint(1025, 9999)
-        #self.port = 9999
-        self.tls_port = random.randint(1025, 9999)
+        #self.port = random.randint(1025, 9999)
+        self.port = 9999
+        #self.tls_port = random.randint(1025, 9999)
+        self.tls_port = 9999
         self.tmp_dir = "../tmp/"
         self.priv_key = os.path.join(self.tmp_dir, 'grader.key')
         self.cert = os.path.join(self.tmp_dir, 'grader.crt')

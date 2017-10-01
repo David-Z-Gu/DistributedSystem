@@ -267,22 +267,25 @@ void write_to_log(Request * request, char * response){
 }
 
 
-/*
-void check_clients(max_idx, nready, client)
+
+void check_clients(int * max_idx, int * nready, int * client, fd_set* read_fds)
 {
     int i, connfd, is_closed;
 
     for (i=0; (i <= max_idx) && (nready > 0); i++)
     {
-        connfd = cliend[i];
+        connfd = client[i];
 
-        if ((connfd > 0) && (FD_ISSET(connfd, &p->ready_set)))
+        if ((connfd > 0) && (FD_ISSET(connfd, read_fds)))
         {
-            p->nready--;
+            nready--;
             is_closed = 0;
-            process_http_request(i, p, &is_closed);
-            if (is_closed) remove_client(i, p);
+            if (is_closed)
+                printf("Connection: Close\r\n");
+            else
+                printf("Connection: Keep-Alive\r\n");
+            //process_http_request(i, p, &is_closed);
+            //if (is_closed) remove_client(i, p);
         }
     }
 }
- */

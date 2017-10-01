@@ -21,6 +21,18 @@
 #define ECHO_PORT 9999
 #define BUF_SIZE 4096
 
+/*
+typedef struct
+{
+    //int maxfd;                   // Largest descriptor in read_set
+    //int nready;                  // Number of ready descriptors from select
+    //int maxi;                    // Highwater index into client array
+    //int clientfd[FD_SETSIZE];    // Set of active client descriptors
+    fd_set read_set;             // Set of all active descriptors
+    fd_set ready_set;            // Subset of descriptors ready for reading
+    //rio_t clientrio[FD_SETSIZE]; // Set of active read buffers
+} pool;
+*/
 int close_socket(int sock) {
     log_write("closing sock %d\n", sock);
     if (close(sock)) {
@@ -46,7 +58,7 @@ int main(int argc, char *argv[]) {
     struct tm tm;
     struct stat sbuf;
     time_t now;
-    char filetype[100], tbuf[100], dbuf[100];
+    char filetype[0], tbuf[0], dbuf[0];
 
     if (argc < 3) {
         printf("Please enter the http port, www resource path, and the log file name\n");
@@ -190,6 +202,6 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
-        //check_clients(max_idx, nready, client);
+        check_clients(max_idx, nready, client, read_fds);
     }
 }
