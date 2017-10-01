@@ -4,6 +4,7 @@
 
 #include <fcntl.h>
 #include <unistd.h>
+#include <time.h>
 #include "parse.h"
 #include "process_request.h"
 #include "log.h"
@@ -85,9 +86,18 @@ void process_head(Request * request, char * response, char * resource_path){
     //sprintf(response, "HTTP/1.1 200 OK\r\n");
     strcat(response, HTTP_VERSION);
     strcat(response, STATUS_200);
-    //sprintf(response, "%sDate: %s\r\n", response, dbuf);
+    //modified time and dates
+    write_to_log(request, response);
+
     sprintf(response, "%sServer: Liso/1.0\r\n", response);
-    //if (is_closed) sprintf(buf, "%sConnection: close\r\n", response);
+    /*
+    if (is_closed) {
+        sprintf(buf, "%sConnection: close\r\n", response);
+    }
+    else{
+        sprintf(buf, "%sConnection: is alive\r\n", response);
+    }
+     */
     sprintf(response, "%sContent-Length: %ld\r\n", response, content_length);
     sprintf(response, "%sContent-Type: %s\r\n", response, content_type);
     //sprintf(buf, "%sLast-Modified: %s\r\n\r\n", buf, tbuf);
@@ -122,9 +132,18 @@ void process_get(Request * request, char * response, char * resource_path){
     // construct response
     strcat(response, HTTP_VERSION);
     strcat(response, STATUS_200);
-    //sprintf(response, "%sDate: %s\r\n", response, dbuf);
+    //modified time and dates
+    write_to_log(request, response);
+
     sprintf(response, "%sServer: Liso/1.0\r\n", response);
-    //if (is_closed) sprintf(buf, "%sConnection: close\r\n", response);
+    /*
+    if (is_closed) {
+        sprintf(buf, "%sConnection: close\r\n", response);
+    }
+    else{
+        sprintf(buf, "%sConnection: is alive\r\n", response);
+    }
+     */
     sprintf(response, "%sContent-Length: %ld\r\n", response, content_length);
     sprintf(response, "%sContent-Type: %s\r\n", response, content_type);
     //sprintf(buf, "%sLast-Modified: %s\r\n\r\n", buf, tbuf);
@@ -167,6 +186,9 @@ void process_post(Request * request, char * response, char * resource_path){
     }
 
     // process body of post??
+
+    //modified time and dates
+    write_to_log(request, response);
 
     printf("successful post");
     strcat(response, HTTP_VERSION);
@@ -212,5 +234,53 @@ void process_http_request(Request * request, char * response, char * resource_pa
         strcat(response, HTTP_VERSION);
         strcat(response, STATUS_501);
         strcat(response, "\r\n");
+    }
+}
+
+void write_to_log(Request * request, char * response){
+    struct tm tm;
+    struct stat sbuf;
+    time_t now;
+    char filetype[100], tbuf[100], dbuf[100];
+    stat(request->http_uri, &sbuf);
+    tm = *gmtime(&sbuf.st_mtime); //st_mtime: time of last data modification.
+    //printf("yeah %d", mktime(tm));
+    /*
+    if (&tm == 2){
+        now = time(0);
+        tm = *gmtime(&now);
+    }
+     */
+    //b
+    if (b->stage == STAGE_CLOSE)
+        sprintf(response, "%sConnection: Close\r\n", response);
+    else
+        sprintf(response, "%sConnection: Keep-Alive\r\n", response);
+    strftime(tbuf, 1000, "%a, %d %b %Y %H:%M:%S %Z", &tm);
+    sprintf(response, "%sLast-Modified: %s\r\n", response, tbuf);
+
+    now = time(0);
+    tm = *gmtime(&now);
+    strftime(dbuf, 100, "%a, %d %b %Y %H:%M:%S %Z", &tm);
+    sprintf(response, "%sDate: %s\r\n", response, dbuf);
+}
+
+
+
+void check_clients(max_idx, nready, client)
+{
+    int i, connfd, is_closed;
+
+    for (i=0; (i <= max_idx) && (nready > 0); i++)
+    {
+        connfd = cliend[i];
+
+        if ((connfd > 0) && (FD_ISSET(connfd, &p->ready_set)))
+        {
+            p->nready--;
+            is_closed = 0;
+            process_http_request(i, p, &is_closed);
+            if (is_closed) remove_client(i, p);
+        }
     }
 }

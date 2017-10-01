@@ -190,5 +190,6 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
+        //check_clients(max_idx, nready, client);
     }
 }

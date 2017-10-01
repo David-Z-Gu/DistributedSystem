@@ -12,7 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="332190d7-94d8-4dca-b13d-5ef4cf6ddab9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project-1/lisod.c" afterPath="$PROJECT_DIR$/project-1/lisod.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project-1/process_request.c" afterPath="$PROJECT_DIR$/project-1/process_request.c" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,23 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="log.c" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project-1/log.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
-              <folding>
-                <element signature="e#42#59#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="lisod.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/project-1/lisod.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="142" column="29" lean-forward="true" selection-start-line="142" selection-start-column="29" selection-end-line="142" selection-end-column="29" />
+            <state relative-caret-position="865">
+              <caret line="192" column="10" lean-forward="false" selection-start-line="192" selection-start-column="10" selection-end-line="192" selection-end-column="10" />
               <folding>
                 <element signature="e#168#191#0" expanded="true" />
               </folding>
@@ -61,11 +50,21 @@
       <file leaf-file-name="process_request.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project-1/process_request.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="9" lean-forward="true" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+            <state relative-caret-position="414">
+              <caret line="285" column="1" lean-forward="true" selection-start-line="285" selection-start-column="1" selection-end-line="285" selection-end-column="1" />
               <folding>
                 <element signature="e#90#108#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="grader1cp2.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/autograde/grader1cp2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3481">
+              <caret line="33" column="33" lean-forward="false" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="33" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -95,7 +94,7 @@
       <file leaf-file-name="parse.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/starter_code2/parse.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-87">
+            <state relative-caret-position="390">
               <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding />
             </state>
@@ -105,8 +104,8 @@
       <file leaf-file-name="parse.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/starter_code2/parse.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="9" lean-forward="false" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+            <state relative-caret-position="300">
+              <caret line="20" column="21" lean-forward="true" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -127,16 +126,18 @@
       <find>read</find>
       <find>is_closed</find>
       <find>MAX_FILE_BUF_SIZE</find>
-      <find>process_head</find>
       <find>serve_error</find>
       <find>check_corr</find>
       <find>log</find>
-      <find>process</find>
       <find>log_write</find>
       <find>buf</find>
       <find>req</find>
       <find>filename</find>
       <find>sbuf</find>
+      <find>process_head</find>
+      <find>server</find>
+      <find>process</find>
+      <find>bind</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -156,6 +157,7 @@
         <option value="$PROJECT_DIR$/project-1/Makefile" />
         <option value="$PROJECT_DIR$/project-1/lowlevelhttptests.py" />
         <option value="$PROJECT_DIR$/project-1/log.c" />
+        <option value="$PROJECT_DIR$/project-1/process_request.c" />
         <option value="$PROJECT_DIR$/project-1/lisod.c" />
       </list>
     </option>
@@ -196,6 +198,11 @@
             <path>
               <item name="DistributedSystem" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
               <item name="DistributedSystem" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DistributedSystem" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="DistributedSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="autograde" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DistributedSystem" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
@@ -264,12 +271,12 @@
       <workItem from="1506437882004" duration="3406000" />
       <workItem from="1506710698383" duration="34000" />
       <workItem from="1506710762707" duration="20942000" />
-      <workItem from="1506816207976" duration="4158000" />
+      <workItem from="1506816207976" duration="10954000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33793000" />
+    <option name="totallyTimeSpent" value="40589000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="797" extended-state="0" />
@@ -330,16 +337,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/starter_code/echo_client.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#882#900#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/starter_code/echo_server.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1935">
@@ -490,7 +487,7 @@
         <state relative-caret-position="210">
           <caret line="14" column="13" lean-forward="true" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding>
-            <element signature="e#42#59#0" expanded="true" />
+            <element signature="e#42#59#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -660,6 +657,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/project-1/log.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+          <folding>
+            <element signature="e#42#59#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -678,48 +685,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project-1/log.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
-          <folding>
-            <element signature="e#42#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project-1/process_request.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="9" lean-forward="true" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
-          <folding>
-            <element signature="e#90#108#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/starter_code2/parse.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-87">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/starter_code2/parse.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="9" lean-forward="false" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+        <state relative-caret-position="300">
+          <caret line="20" column="21" lean-forward="true" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/starter_code2/parse.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/autograde/grader1cp2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3481">
+          <caret line="33" column="33" lean-forward="false" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project-1/process_request.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="285" column="1" lean-forward="true" selection-start-line="285" selection-start-column="1" selection-end-line="285" selection-end-column="1" />
+          <folding>
+            <element signature="e#90#108#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/project-1/lisod.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="142" column="29" lean-forward="true" selection-start-line="142" selection-start-column="29" selection-end-line="142" selection-end-column="29" />
+        <state relative-caret-position="865">
+          <caret line="192" column="10" lean-forward="false" selection-start-line="192" selection-start-column="10" selection-end-line="192" selection-end-column="10" />
           <folding>
             <element signature="e#168#191#0" expanded="true" />
           </folding>
