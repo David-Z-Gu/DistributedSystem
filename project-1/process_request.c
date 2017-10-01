@@ -60,13 +60,13 @@ int check_file_access(char *file_path, char *response) {
     return file;
 }
 
-void process_head(Request * request, char * response){
+void process_head(Request * request, char * response, char * resource_path){
     char file_path[BUF_SIZE], content_type[BUF_SIZE];
     size_t content_length;
 
     fprintf(stdout, "req uri %s\n", request->http_uri);
     // get request uri to get location of file
-    strcat(file_path, "www");
+    strcat(file_path, resource_path);
     strcat(file_path, request->http_uri);
 
     int file = check_file_access(file_path, response);
@@ -98,13 +98,13 @@ void process_head(Request * request, char * response){
     memset(content_type, 0, BUF_SIZE);
 }
 
-void process_get(Request * request, char * response){
+void process_get(Request * request, char * response, char * resource_path){
     char file_path[BUF_SIZE], content_type[BUF_SIZE];
     size_t content_length;
 
     fprintf(stdout, "req uri %s\n", request->http_uri);
     // get request uri to get location of file
-    strcat(file_path, "www");
+    strcat(file_path, resource_path);
     strcat(file_path, request->http_uri);
 
     int file = check_file_access(file_path, response);
@@ -137,12 +137,12 @@ void process_get(Request * request, char * response){
     memset(content_type, 0, BUF_SIZE);
 }
 
-void process_post(Request * request, char * response){
+void process_post(Request * request, char * response, char * resource_path){
     char file_path[BUF_SIZE];
 
     fprintf(stdout, "req uri %s\n", request->http_uri);
     // get request uri to get location of file
-    strcat(file_path, "www");
+    strcat(file_path, resource_path);
     strcat(file_path, request->http_uri);
 
     int file = check_file_access(file_path, response);
@@ -178,7 +178,7 @@ void process_post(Request * request, char * response){
     memset(file_path, 0, BUF_SIZE);
 }
 
-void process_http_request(Request * request, char * response) {
+void process_http_request(Request * request, char * response, char * resource_path) {
     if (request == NULL) {
         log_write("Bad Request. Request cannot be parsed!\n");
         strcat(response, HTTP_VERSION);
@@ -197,15 +197,15 @@ void process_http_request(Request * request, char * response) {
 
     if (strcmp(request->http_method, "HEAD") == 0) {
         log_write("Processing a HEAD request");
-        process_head(request, response);
+        process_head(request, response, resource_path);
     }
     else if (strcmp(request->http_method, "GET") == 0) {
         log_write("Processing a GET request");
-        process_get(request, response);
+        process_get(request, response, resource_path);
     }
     else if (strcmp(request->http_method, "POST") == 0) {
         log_write("Processing a POST request");
-        process_post(request, response);
+        process_post(request, response, resource_path);
     }
     else {
         log_write("Requested http method %s is not implemented.",  request->http_method);
