@@ -211,6 +211,7 @@ void process_http_request(Request * request, char * response, char * resource_pa
         log_write("Requested http method %s is not implemented.",  request->http_method);
         strcat(response, HTTP_VERSION);
         strcat(response, STATUS_501);
+        sprintf(response, "%sServer: Liso/1.0\r\n", response);
         strcat(response, "\r\n");
     }
 }
