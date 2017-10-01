@@ -12,7 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="332190d7-94d8-4dca-b13d-5ef4cf6ddab9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project-1/lisod.c" afterPath="$PROJECT_DIR$/project-1/lisod.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project-1/process_request.c" afterPath="$PROJECT_DIR$/project-1/process_request.c" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -35,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lisod.c" pinned="false" current-in-tab="true">
+      <file leaf-file-name="lisod.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project-1/lisod.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="865">
-              <caret line="192" column="10" lean-forward="false" selection-start-line="192" selection-start-column="10" selection-end-line="192" selection-end-column="10" />
+            <state relative-caret-position="-298">
+              <caret line="126" column="44" lean-forward="true" selection-start-line="126" selection-start-column="44" selection-end-line="126" selection-end-column="44" />
               <folding>
                 <element signature="e#168#191#0" expanded="true" />
               </folding>
@@ -47,11 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="process_request.c" pinned="false" current-in-tab="false">
+      <file leaf-file-name="process_request.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/project-1/process_request.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="285" column="1" lean-forward="true" selection-start-line="285" selection-start-column="1" selection-end-line="285" selection-end-column="1" />
+            <state relative-caret-position="342">
+              <caret line="258" column="4" lean-forward="true" selection-start-line="258" selection-start-column="4" selection-end-line="258" selection-end-column="4" />
               <folding>
                 <element signature="e#90#108#0" expanded="true" />
               </folding>
@@ -157,8 +157,8 @@
         <option value="$PROJECT_DIR$/project-1/Makefile" />
         <option value="$PROJECT_DIR$/project-1/lowlevelhttptests.py" />
         <option value="$PROJECT_DIR$/project-1/log.c" />
-        <option value="$PROJECT_DIR$/project-1/process_request.c" />
         <option value="$PROJECT_DIR$/project-1/lisod.c" />
+        <option value="$PROJECT_DIR$/project-1/process_request.c" />
       </list>
     </option>
   </component>
@@ -271,12 +271,12 @@
       <workItem from="1506437882004" duration="3406000" />
       <workItem from="1506710698383" duration="34000" />
       <workItem from="1506710762707" duration="20942000" />
-      <workItem from="1506816207976" duration="10954000" />
+      <workItem from="1506816207976" duration="11180000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40589000" />
+    <option name="totallyTimeSpent" value="40815000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="797" extended-state="0" />
@@ -711,22 +711,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project-1/process_request.c">
+    <entry file="file://$PROJECT_DIR$/project-1/lisod.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="285" column="1" lean-forward="true" selection-start-line="285" selection-start-column="1" selection-end-line="285" selection-end-column="1" />
+        <state relative-caret-position="-298">
+          <caret line="126" column="44" lean-forward="true" selection-start-line="126" selection-start-column="44" selection-end-line="126" selection-end-column="44" />
           <folding>
-            <element signature="e#90#108#0" expanded="true" />
+            <element signature="e#168#191#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project-1/lisod.c">
+    <entry file="file://$PROJECT_DIR$/project-1/process_request.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="865">
-          <caret line="192" column="10" lean-forward="false" selection-start-line="192" selection-start-column="10" selection-end-line="192" selection-end-column="10" />
+        <state relative-caret-position="342">
+          <caret line="258" column="4" lean-forward="true" selection-start-line="258" selection-start-column="4" selection-end-line="258" selection-end-column="4" />
           <folding>
-            <element signature="e#168#191#0" expanded="true" />
+            <element signature="e#90#108#0" expanded="true" />
           </folding>
         </state>
       </provider>

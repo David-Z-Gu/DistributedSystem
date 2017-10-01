@@ -251,11 +251,12 @@ void write_to_log(Request * request, char * response){
         tm = *gmtime(&now);
     }
      */
-    //b
+    /*
     if (b->stage == STAGE_CLOSE)
         sprintf(response, "%sConnection: Close\r\n", response);
     else
         sprintf(response, "%sConnection: Keep-Alive\r\n", response);
+    */
     strftime(tbuf, 1000, "%a, %d %b %Y %H:%M:%S %Z", &tm);
     sprintf(response, "%sLast-Modified: %s\r\n", response, tbuf);
 
@@ -266,7 +267,7 @@ void write_to_log(Request * request, char * response){
 }
 
 
-
+/*
 void check_clients(max_idx, nready, client)
 {
     int i, connfd, is_closed;
@@ -284,3 +285,4 @@ void check_clients(max_idx, nready, client)
         }
     }
 }
+ */
