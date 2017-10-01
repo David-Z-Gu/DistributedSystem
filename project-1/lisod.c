@@ -14,11 +14,7 @@
 #include <fcntl.h>
 #include "log.h"
 #include "parse.h"
-<<<<<<< HEAD
-#include <arpa/inet.h>
-=======
 #include "process_request.h"
->>>>>>> 7f71dbb677470bbec27570681c90e61070dd4985
 
 #define ECHO_PORT 9999
 #define BUF_SIZE 4096
@@ -32,173 +28,6 @@ int close_socket(int sock) {
     return 0;
 }
 
-<<<<<<< HEAD
-void get_content_type(char *file_ext, char *content_type) {
-    if (strstr(file_ext, ".html")) {
-        strcpy(content_type, "text/html");
-    }
-    else if (strstr(file_ext, ".css")) {
-        strcpy(content_type, "text/css");
-    }
-    else if (strstr(file_ext, ".png")) {
-        strcpy(content_type, "image/png");
-    }
-    else if (strstr(file_ext, ".jpeg")) {
-        strcpy(content_type, "image/jpeg");
-    }
-    else if (strstr(file_ext, ".gif")) {
-        strcpy(content_type, "image/gif");
-    }
-    else {
-        strcpy(content_type, "application/octet-stream");
-    }
-}
-
-void process_head(Request * request, char * response){
-    char file_path[BUF_SIZE], content_type[BUF_SIZE];
-    size_t content_length;
-
-    fprintf(stdout, "req uri %s\n", request->http_uri);
-    // get request uri to get location of file
-    strcat(file_path, "www");
-    strcat(file_path, request->http_uri);
-
-    printf("final file name is %s\n", file_path);
-    //ADDED 404
-    if (access(file_path, F_OK) == -1) {
-        printf("cannot access file at %s\n", file_path);
-        /*
-        serve_error(file_path, "404", "Not Found",
-                    "Server couldn't find this file");
-                    */
-    }
-    int file = open(file_path, O_RDONLY);
-    // open uri w read only
-    if ( file == -1) {
-        printf("can't open file at %s\n", file_path);
-        //ADDED 501
-        /*
-        serve_error(file_path, "501", "Not Implemented",
-                    "The method is not valid or not implemented by the server");
-                    */
-    }
-
-    char nbytes[MAX_FILE_BUF_SIZE];
-    // get content length from reading file
-    content_length = read(file, nbytes, sizeof(nbytes));
-
-    // get content type based on uri
-    get_content_type(request->http_uri, content_type);
-
-    // construct response
-    sprintf(response, "HTTP/1.1 200 OK\r\n");
-    sprintf(response, "%sServer: Liso/1.0\r\n", response);
-    //if (is_closed) sprintf(buf, "%sConnection: close\r\n", response);
-    sprintf(response, "%sContent-Length: %ld\r\n", response, content_length);
-    sprintf(response, "%sContent-Type: %s\r\n", response, content_type);
-    strcat(response, "\r\n");
-
-    memset(file_path, 0, BUF_SIZE);
-    memset(nbytes, 0, MAX_FILE_BUF_SIZE);
-    memset(content_type, 0, BUF_SIZE);
-}
-
-void process_get(Request * request, char * response){
-    char file_path[BUF_SIZE], content_type[BUF_SIZE];
-    size_t content_length;
-
-    fprintf(stdout, "req uri %s\n", request->http_uri);
-    // get request uri to get location of file
-    strcat(file_path, "www");
-    strcat(file_path, request->http_uri);
-
-    printf("final file name is %s\n", file_path);
-
-    if (access(file_path, F_OK) == -1) {
-        printf("cannot access file at %s\n", file_path);
-        //ADDED 404
-        /*
-         * serve_error(file_path, "404", "Not Found",
-                    "Server couldn't find this file");
-         */
-    }
-
-    // open uri w read only
-    int file = open(file_path, O_RDONLY);
-    if (file == -1) {
-        printf("can't open file at %s\n", file_path);
-        //ADDED 501
-        /*
-        serve_error(file_path, "501", "Not Implemented",
-                    "The method is not valid or not implemented by the server");
-         */
-
-    }
-
-    char nbytes[MAX_FILE_BUF_SIZE];
-    // get content length from reading file
-    content_length = read(file, nbytes, sizeof(nbytes));
-
-    // get content type based on uri
-    get_content_type(request->http_uri, content_type);
-
-    // construct response
-    sprintf(response, "HTTP/1.1 200 OK\r\n");
-    sprintf(response, "%sServer: Liso/1.0\r\n", response);
-    //if (is_closed) sprintf(buf, "%sConnection: close\r\n", response);
-    sprintf(response, "%sContent-Length: %ld\r\n", response, content_length);
-    sprintf(response, "%sContent-Type: %s\r\n", response, content_type);
-    strcat(response, "\r\n");
-
-    strcat(response, nbytes);
-
-    memset(file_path, 0, BUF_SIZE);
-    memset(nbytes, 0, MAX_FILE_BUF_SIZE);
-    memset(content_type, 0, BUF_SIZE);
-}
-
-void process_post(Request * request, char * response){
-    if (access(request->http_uri, F_OK ) == -1) {
-        printf("%s cannot be accessed", request->http_uri);
-        sprintf(response, "HTTP/1.1 204 NO CONTENT\r\n");
-    }
-    else {
-        //TODO: more in response headers?
-        printf("successful post");
-        sprintf(response, "HTTP/1.1 200 OK\r\n");
-        sprintf(response, "%sServer: Liso/1.0\r\n", response);
-    }
-}
-/*
-void serve_error(int client_fd, char *errnum, char *shortmsg, char *longmsg) {
-    struct tm tm;
-    time_t now;
-    char buf[MAX_LINE], body[MAX_LINE], dbuf[MIN_LINE];
-    //TODO: return 'connection', 'date', and 'server' headers in head/get/post; return 'content-length' in post
-    //TODO: last modified
-    now = time(0);
-    tm = *gmtime(&now);
-    strftime(dbuf, MIN_LINE, "%a, %d %b %Y %H:%M:%S %Z", &tm);
-
-    // build HTTP response body
-    sprintf(body, "<html><title>Lisod Error</title>");
-    sprintf(body, "%s<body>\r\n", body);
-    sprintf(body, "%sError %s -- %s\r\n", body, errnum, shortmsg);
-    sprintf(body, "%s<br><p>%s</p></body></html>\r\n", body, longmsg);
-
-    // print HTTP response
-    sprintf(buf, "HTTP/1.1 %s %s\r\n", errnum, shortmsg);
-    sprintf(buf, "%sDate: %s\r\n", buf, dbuf);
-    sprintf(buf, "%sServer: Liso/1.0\r\n", buf);
-    //if (is_closed) sprintf(buf, "%sConnection: close\r\n", buf);
-    sprintf(buf, "%sContent-type: text/html\r\n", buf);
-    sprintf(buf, "%sContent-length: %d\r\n\r\n", buf, (int)strlen(body));
-    send(client_fd, buf, strlen(buf), 0);
-    send(client_fd, body, strlen(body), 0);
-}
-*/
-=======
->>>>>>> 7f71dbb677470bbec27570681c90e61070dd4985
 int main(int argc, char *argv[]) {
     fd_set master, read_fds; // master and temp list for select()
     int sock, client_sock; //listening socket descriptor and newly accepted socket descriptor
@@ -306,51 +135,10 @@ int main(int argc, char *argv[]) {
 
                         // handle request
                         Request *request = parse(buf, readret, client[k]);
-<<<<<<< HEAD
-
-                        if (request == NULL) {
-                            log_write("Bad Request. Request cannot be parsed!");
-                            //ADDED 400
-                            /*
-                            serve_error(client[k], "400", "Bad Request",
-                                        "Request cannot be parsed!");
-                                        */
-                            break;
-                        }
-//                        printf("http method %s\n", request->http_method);
-//                        printf("http version %s\n", request->http_version);
-//                        printf("http uri %s\n", request->http_uri);
-                        for (i=0; i< request->header_count; i++){
-                            printf("header name %s header value %s\n", request->headers[i].header_name, request->headers[i].header_value);
-                        }
-
-                        char * response = malloc(20000);
-
-                        if (strcmp(request->http_method, "HEAD") == 0) {
-                            fprintf(stdout, "encountered a HEAD request\n");
-                            process_head(request, response);
-                        }
-                        else if (strcmp(request->http_method, "GET") == 0) {
-                            fprintf(stdout, "encountered a GET request\n");
-                            process_get(request, response);
-                        }
-                        else if (strcmp(request->http_method, "POST") == 0) {
-                            fprintf(stdout, "encountered a POST request\n");
-                            process_post(request, response);
-                        }
-                        else {
-                            fprintf(stdout, "Response with 501");
-                            /*serve_error(client[k], "501", "Not Implemented",
-                                        "The method is not valid or not implemented by the server");
-                                        */
-                        }
-                        printf("response size is %lu\n", strlen(response));
-=======
                         char * response = malloc(20000);
 
                         process_http_request(request, response);
 
->>>>>>> 7f71dbb677470bbec27570681c90e61070dd4985
                         printf("response is %s\n", response);
                         if (send(client[k], response, strlen(response), 0) < 0) {
                             close_socket(client[k]);
@@ -365,6 +153,7 @@ int main(int argc, char *argv[]) {
                             log_write("serve_clients: socket %d hung up\n", client[k]);
                         }
                         else {
+                            log_write("serve_clients: recv return -1\n");
                         }
                         close_socket(client[k]);
                         FD_CLR(client[k], &master);
