@@ -12,6 +12,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <arpa/inet.h>
 #include "log.h"
 #include "parse.h"
 #include "process_request.h"
@@ -102,13 +103,12 @@ int main(int argc, char *argv[]) {
             cli_size = sizeof(cli_addr);
             client_sock = accept(sock, (struct sockaddr *) &cli_addr, &cli_size);
             /* Get the client address*/
-            struct sockaddr_in* pV4Addr = (struct sockaddr_in*)&cli_addr;
-            struct in_addr ipAddr = pV4Addr->sin_addr;
-            printf("CLIENT IP ADDR %d", ipAddr);
+            struct in_addr ipAddr = ((struct sockaddr_in*)&cli_addr)->sin_addr;
+
             /*Transform the ip address into strings.*/
             char str[INET_ADDRSTRLEN];
 
-            printf("Client IP address is %s",inet_ntop( AF_INET, &ipAddr, str, INET_ADDRSTRLEN ));//Convert IP addresses to human-readable form
+            log_write("Client IP address is %s\n", inet_ntop(AF_INET, &ipAddr, str, INET_ADDRSTRLEN ));
 
             nready--;
             for (j = 0; j <= FD_SETSIZE; j++) {
