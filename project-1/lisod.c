@@ -43,10 +43,16 @@ int main(int argc, char *argv[]) {
     char buf[BUF_SIZE];
     int yes = 1;
 
-    //http_port = atoi(argv[1]);
-    //www_path = atoi(argv[2]);
-    www_path = "www/";
-    log_file = "test.log";
+    if (argc < 3) {
+        printf("Please enter the http port, www resource path, and the log file name\n");
+        return;
+    }
+
+    http_port = atoi(argv[1]);
+    www_path = argv[2];
+    log_file = argv[3];
+
+    log_write("Using port %i, with www path %s, and log file %s\n", http_port, www_path, log_file);
 
     fprintf(stdout, "----- Lisod Server -----\n");
 
@@ -137,7 +143,7 @@ int main(int argc, char *argv[]) {
                         Request *request = parse(buf, readret, client[k]);
                         char * response = malloc(20000);
 
-                        process_http_request(request, response);
+                        process_http_request(request, response, www_path);
 
                         printf("response is %s\n", response);
                         if (send(client[k], response, strlen(response), 0) < 0) {
