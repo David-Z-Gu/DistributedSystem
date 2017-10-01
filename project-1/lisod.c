@@ -13,6 +13,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <arpa/inet.h>
+#include <time.h>
 #include "log.h"
 #include "parse.h"
 #include "process_request.h"
@@ -42,6 +43,10 @@ int main(int argc, char *argv[]) {
     struct sockaddr_in addr, cli_addr; /*struct = a user defined data type that allows to combine data items of different kind*/
     char buf[BUF_SIZE];
     int yes = 1;
+    struct tm tm;
+    struct stat sbuf;
+    time_t now;
+    char filetype[100], tbuf[100], dbuf[100];
 
     //http_port = atoi(argv[1]);
     //www_path = atoi(argv[2]);
@@ -135,6 +140,23 @@ int main(int argc, char *argv[]) {
 
                         // handle request
                         Request *request = parse(buf, readret, client[k]);
+                        stat(client[k], &sbuf);
+                        tm = *gmtime(&sbuf.st_mtime); //st_mtime: time of last data modification.
+                        //printf("yeah %d", mktime(tm));
+                        if (&tm == 2){
+                            now = time(0);
+                            tm = *gmtime(&now);
+                        }
+
+                        strftime(tbuf, 1000, "%a, %d %b %Y %H:%M:%S %Z", &tm);
+                        log_write("Last modified is %s\n", tbuf);
+                        now = time(0);
+
+                        tm = *gmtime(&now);
+                        strftime(dbuf, 100, "%a, %d %b %Y %H:%M:%S %Z", &tm);
+                        log_write("Date is %s\n", dbuf);
+
+
                         char * response = malloc(20000);
 
                         process_http_request(request, response);
