@@ -13,8 +13,6 @@
   <component name="ChangeListManager">
     <list default="true" id="332190d7-94d8-4dca-b13d-5ef4cf6ddab9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project-1/lisod.c" afterPath="$PROJECT_DIR$/project-1/lisod.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project-1/log.c" afterPath="$PROJECT_DIR$/project-1/log.c" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,8 +49,8 @@
       <file leaf-file-name="lisod.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/project-1/lisod.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-366">
-              <caret line="136" column="29" lean-forward="true" selection-start-line="136" selection-start-column="29" selection-end-line="136" selection-end-column="29" />
+            <state relative-caret-position="102">
+              <caret line="142" column="29" lean-forward="true" selection-start-line="142" selection-start-column="29" selection-end-line="142" selection-end-column="29" />
               <folding>
                 <element signature="e#168#191#0" expanded="true" />
               </folding>
@@ -266,12 +264,12 @@
       <workItem from="1506437882004" duration="3406000" />
       <workItem from="1506710698383" duration="34000" />
       <workItem from="1506710762707" duration="20942000" />
-      <workItem from="1506816207976" duration="4105000" />
+      <workItem from="1506816207976" duration="4158000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33740000" />
+    <option name="totallyTimeSpent" value="33793000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="797" extended-state="0" />
@@ -720,8 +718,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/project-1/lisod.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-366">
-          <caret line="136" column="29" lean-forward="true" selection-start-line="136" selection-start-column="29" selection-end-line="136" selection-end-column="29" />
+        <state relative-caret-position="102">
+          <caret line="142" column="29" lean-forward="true" selection-start-line="142" selection-start-column="29" selection-end-line="142" selection-end-column="29" />
           <folding>
             <element signature="e#168#191#0" expanded="true" />
           </folding>
